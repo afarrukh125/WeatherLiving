@@ -3,13 +3,14 @@ import './App.css';
 import Weather from './Weather'
 import ClearBg from './resources/weather-backgrounds/clear/clear-bg.svg'
 import ClearBgObject from './resources/weather-backgrounds/clear/clear-right-obj.svg'
+import SnowBg from './resources/weather-backgrounds/snow/snow-bg.svg'
+import SnowBgObject from './resources/weather-backgrounds/snow/snow-bg-obj.svg'
 
 class App extends Component {
 
-    // state holds data about clients rough location and the current weather. 
+    // state holds data about client's rough location and the current weather. 
     // default is null. API call will change it
     state = {
-        backgroundImage: null,
         country : null,
         city : null,
         lat : null,
@@ -51,22 +52,21 @@ class App extends Component {
   // index 0: the background
   // index 1: objects found on the background
   setBackground(weather){
-    let background = null;
     switch(weather){
       case 'Clear':
-        return [ClearBg, ClearBgObject]
+          return [ClearBg, ClearBgObject]
       case 'Rain':
-          return [ClearBg, ClearBgObject]
+          return [ClearBg, ClearBgObject] //update
       case 'Drizzle':
-        return [ClearBg, ClearBgObject]
+          return [ClearBg, ClearBgObject] //update
       case 'Clouds':
-          return [ClearBg, ClearBgObject]
+          return [ClearBg, ClearBgObject] //update
       case 'Snow':
-          return [ClearBg, ClearBgObject]
+          return [SnowBg, SnowBgObject]
       case 'Thunderstorm':
-          return [ClearBg, ClearBgObject]
+          return [ClearBg, ClearBgObject] //update
       case 'Atmosphere':
-          return [ClearBg, ClearBgObject]
+          return [ClearBg, ClearBgObject] //update
       default:
           return null
         }
@@ -77,12 +77,16 @@ class App extends Component {
       return <h1> loading ...</h1>
     }
     const backgroundItems = this.setBackground(this.state.weather)
+
+    if (backgroundItems == null) {
+      return <h1> For developers. Error loading background. Current weather does not have an image. Please update</h1>
+    }
+
     return ( 
       <div className='App' style={{backgroundImage: `url(${backgroundItems[0]})`}}>
-        <h1>Welcome to Weather Living</h1>
         <Weather 
           info={{
-            country : this.state.coutry, 
+            country : this.state.country, 
             city : this.state.city,
             weather : this.state.weather, 
             temp : this.state.temp, 
@@ -90,7 +94,7 @@ class App extends Component {
             min_temp : this.state.min_temp
           }}
         />  
-        <img src={backgroundItems[1]} alt='weather background' className='App-bg-object'/>
+        <img src={backgroundItems[1]} alt='weather background object' className='App-bg-object'/>
       </div>
     );
   }

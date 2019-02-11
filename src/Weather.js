@@ -10,24 +10,11 @@ import Atmosphere from './resources/weather-icons/atmosphere.svg'
 class Weather extends Component{
     // state holds data about clients rough location and the current weather. 
     // default is null. API call will change it
-    constructor(){
-        super()
-        this.state = {
-            country : null,
-            city : null,
-            lat : null,
-            lon : null,
-            temp : null,
-            max_temp : null,
-            min_temp : null,
-            weather : null
-        }
-    }
-    
+   
     render(props){
         let info = this.props.info
         return(
-            <div className='weather'>
+            <div className='Weather-info'>
                 <h4>Test data...</h4>
                 <img src={this.renderIcon(info.weather)} alt='weather icon' width='200px'/>
                 <div>
@@ -35,6 +22,11 @@ class Weather extends Component{
                     The country is: {info.country} <br />
                     The city is: {info.city} <br />
                     The temperature is: {info.temp} <br />
+                    <table>
+                        <tr>
+                            <td> {info.country}, </td> <td> {info.city} </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         )
