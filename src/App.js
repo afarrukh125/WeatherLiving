@@ -8,7 +8,7 @@ import SnowBgObject from './resources/weather-backgrounds/snow/snow-bg-obj.svg'
 
 class App extends Component {
 
-    // state holds data about client's rough location and the current weather. 
+    // state holds data about client's rough location and the current weather.
     // default is null. API call will change it
     state = {
         country : null,
@@ -24,7 +24,7 @@ class App extends Component {
     // async method fetches JSON data from 2 APIs. One for client info and another for weather info.
     // state of component is changed after each API call
     async componentDidMount () {
-      // fetch data about client location using client IP and update the component state  
+      // fetch data about client location using client IP and update the component state
       const userDataURL = 'http://ip-api.com/json/'
       const userDataResponse = await fetch(userDataURL)
       const userData = await userDataResponse.json()
@@ -48,7 +48,7 @@ class App extends Component {
       })
   }
 
-  // returns a list of svg file depending on the weather. 
+  // returns a list of svg file depending on the weather.
   // index 0: the background
   // index 1: objects found on the background
   setBackground(weather){
@@ -74,26 +74,26 @@ class App extends Component {
 
   render() {
     if (this.state.weather == null){
-      return <h1> loading ...</h1>
+      return <h1> loading ... If this takes too long, ensure your adblocker is not blocking this website.</h1>
     }
     const backgroundItems = this.setBackground(this.state.weather)
 
     if (backgroundItems == null) {
-      return <h1> For developers. Error loading background. Current weather does not have an image. Please update</h1>
+      return <h1> For developers. Error loading background. Current weather does not have an image. Please update.</h1>
     }
 
-    return ( 
+    return (
       <div className='App' style={{backgroundImage: `url(${backgroundItems[0]})`}}>
-        <Weather 
+        <Weather
           info={{
-            country : this.state.country, 
+            country : this.state.country,
             city : this.state.city,
-            weather : this.state.weather, 
-            temp : this.state.temp, 
-            max_temp : this.state.max_temp, 
+            weather : this.state.weather,
+            temp : this.state.temp,
+            max_temp : this.state.max_temp,
             min_temp : this.state.min_temp
           }}
-        />  
+        />
         <img src={backgroundItems[1]} alt='weather background object' className='App-bg-object'/>
       </div>
     );
