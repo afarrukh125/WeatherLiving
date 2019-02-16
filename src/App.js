@@ -57,6 +57,8 @@ class App extends Component {
           return [ClearBg, ClearBgObject]
       case 'Rain':
           return [ClearBg, ClearBgObject] //update
+      case 'Mist':
+          return [ClearBg, ClearBgObject] // update
       case 'Drizzle':
           return [ClearBg, ClearBgObject] //update
       case 'Clouds':
@@ -79,7 +81,8 @@ class App extends Component {
     const backgroundItems = this.setBackground(this.state.weather)
 
     if (backgroundItems == null) {
-      return <h1> For developers. Error loading background. Current weather does not have an image. Please update.</h1>
+        console.log(this.state.weather) // Check the console to see what the weather is that does not have an image
+      return <h1> For developers. Error loading background. Current weather does not have an image. Please update. </h1>
     }
 
     return (
