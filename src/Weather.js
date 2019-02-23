@@ -13,6 +13,16 @@ class Weather extends Component {
     // state holds data about clients rough location and the current weather. 
     // default is null. API call will change it
 
+    state = {
+        userRange : null
+    }
+
+    // method is sent to the WeatherSlider component as a prop
+    // method is caled by the child component when there is a callback. 
+    // callback occurs when there is a change to the slider
+    handleSliderUpdate = (data) =>{
+        this.setState({userRange : data})
+    }
     render(props) {
         let info = this.props.info
         // The table align is temporary
@@ -26,17 +36,15 @@ class Weather extends Component {
                     The city is: {info.city} <br/>
                     The temperature is: {info.temp} <br/>
                     <br/>
-                    <WeatherSlider className='Weather-slider' params = {{
-                        //This is the weather slider along with the text to represent its values
-                        min: 0,
-                        max: 1000,
-                        default: 500
-                    }}/>
+                    <WeatherSlider 
+                        className='Weather-slider' 
+                        dataCallBack={this.handleSliderUpdate}
+                    />
                 </div>
+                <p>This data is from the parent component: {this.state.userRange}</p>
             </div>
         )
     }
-
     // returns svg file based on the current weather
     renderIcon(weather) {
         switch (weather) {

@@ -7,7 +7,6 @@ import SnowBg from './resources/weather-backgrounds/snow/snow-bg.svg'
 import SnowBgObject from './resources/weather-backgrounds/snow/snow-bg-obj.svg'
 
 class App extends Component {
-
     // state holds data about client's rough location and the current weather.
     // default is null. API call will change it
     state = {
@@ -90,6 +89,7 @@ class App extends Component {
 
         return (
             <div className='App' style={{backgroundImage: `url(${backgroundItems[0]})`}}>
+            <img src={backgroundItems[1]} alt='weather background object' className='App-bg-object'/>
                 <Weather
                     info={{
                         country: this.state.country,
@@ -100,8 +100,6 @@ class App extends Component {
                         min_temp: this.state.min_temp
                     }}
                 />
-                <img src={backgroundItems[1]} alt='weather background object' className='App-bg-object'/>
-
             </div>
         );
     }
