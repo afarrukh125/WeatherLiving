@@ -39,7 +39,7 @@ class Weather extends Component {
           <br />
           <span id="info-city">{info.city}</span>
           <br />
-          <span id="info-temp">{info.temp}°</span> <br />
+          <span id="info-temp">{Math.round(info.temp)}°</span> <br />
           <br />
           <LocationDropDown />
           <WeatherSlider
