@@ -23,33 +23,36 @@ class Weather extends Component {
   // callback occurs when there is a change to the slider
   handleSliderUpdate = data => {
     this.setState({ userRange: data });
+    console.log(this.state.userRange)
   };
+
   render(props) {
     let info = this.props.info;
     return (
       <div className="Weather-info">
-        <img
-          src={this.renderIcon(info.weather)}
-          alt="weather icon"
-          width="200px"
-        />
         <div className="main-info">
-          <span id="info-description">{info.weather} </span>
-          <br />
-          <br />
-          <span id="info-city">{info.city}</span>
-          <br />
-          <span id="info-temp">{Math.round(info.temp)}°</span> <br />
-          <br />
-          <LocationDropDown />
-          <WeatherSlider
-            className="Weather-slider"
-            dataCallBack={this.handleSliderUpdate}
-          />
-          <p className="description">{this.state.userRange} Miles</p>
-          <button type="button" className="btn btn-secondary">
-            <h3>Search</h3>
-          </button>
+            <img
+                src={this.renderIcon(info.weather)}
+                alt="weather icon"
+                width="200px"
+            />
+            <br />
+            <span id="info-description"> {info.weather} </span>
+            <br />
+            <br />
+            <span id="info-city"> {info.city} </span>
+            <br />
+            <span id="info-temp"> {Math.round(info.temp)}° </span> <br />
+            <br />
+            <LocationDropDown />
+            <WeatherSlider
+                className="Weather-slider"
+                dataCallBack={this.handleSliderUpdate}
+            />
+            <p className="description">{this.state.userRange} Miles</p>
+            <button type="button" className="btn btn-secondary">
+                Search
+            </button>
         </div>
       </div>
     );

@@ -19,8 +19,9 @@
 .App-bg-object {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   width: 100vw;
+  z-index: 0;
 }
 
 .Weather-info {
@@ -33,6 +34,12 @@
 
 .main-info {
   color: white;
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  z-index: 1;
+
+  
 }
 
 #info-description {
