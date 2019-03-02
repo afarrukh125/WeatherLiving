@@ -10,6 +10,7 @@ import WeatherSlider from "./components/slider/WeatherSlider";
 import LocationDropDown from "./components/LocationDropdown";
 import SearchButton from "./components/SearchButton";
 import "./App.css";
+import TemperatureDisplay from "./components/TemperatureDisplay";
 
 class Weather extends Component {
   // state holds data about clients rough location and the current weather.
@@ -43,7 +44,8 @@ class Weather extends Component {
           <br />
           <span id="info-city"> {info.city} </span>
           <br />
-          <span id="info-temp"> {Math.round(info.temp)}° </span> <br />
+          <TemperatureDisplay info={{ temp: info.temp }} />
+          <br />
           <br />
           <LocationDropDown align="center" />
           <br />
@@ -53,6 +55,9 @@ class Weather extends Component {
           />
           <p className="description">{this.state.userRange} Miles</p>
           <SearchButton />
+          <br />
+          <br />
+          <br />
         </div>
       </div>
     );
