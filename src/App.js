@@ -23,7 +23,8 @@ class App extends Component {
     temp: null,
     max_temp: null,
     min_temp: null,
-    weather: null
+    weather: null,
+    selectedRange: 0
   };
 
   // async method fetches JSON data from 2 APIs. One for client info and another for weather info.
@@ -136,6 +137,10 @@ class App extends Component {
   getWeather = () => {
     return (
       <Weather
+        handleRangeUpdate={this.updateRange}
+        handleDropdownSelected={
+          this.updatePreference // For user to update location preference
+        }
         info={{
           country: this.state.country,
           city: this.state.city,
@@ -146,6 +151,20 @@ class App extends Component {
         }}
       />
     );
+  };
+
+  updateRange = data => {
+    this.setState({ selectedRange: data });
+    console.log(this.state.selectedRange);
+    // Data is now stored in this class.
+  };
+
+  updatePreference = data => {
+    this.setState({ preferredWeather: data });
+    // Typing console.log(this.state.preferredWeather) returns value before data
+    // Strange behaviour but data is the live value
+    // Although it should still work fine.
+    // this.state.preferredWeather is set selected value.
   };
 
   getResultsPage = () => {

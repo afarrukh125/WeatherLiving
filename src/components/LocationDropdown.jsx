@@ -12,22 +12,17 @@ class LocationDropdown extends Component {
     options: ["Select Desired Weather", "Similar", "Warmer", "Colder"]
   }; // State to store the selected index for this dropdown as well as all the possible values the box can take on
   render() {
+    let value = this.state.options[this.state.selectedIdx];
     return (
-      <Dropdown alignRight>
+      <Dropdown alignRight onSelect={this.handleOption}>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-          {this.state.options[this.state.selectedIdx]}
+          {value}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item eventKey="1" onSelect={this.handleOption}>
-            {this.state.options[1]}
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="2" onSelect={this.handleOption}>
-            {this.state.options[2]}
-          </Dropdown.Item>
-          <Dropdown.Item eventKey="3" onSelect={this.handleOption}>
-            {this.state.options[3]}
-          </Dropdown.Item>
+          <Dropdown.Item eventKey="1">{this.state.options[1]}</Dropdown.Item>
+          <Dropdown.Item eventKey="2">{this.state.options[2]}</Dropdown.Item>
+          <Dropdown.Item eventKey="3">{this.state.options[3]}</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );
@@ -35,12 +30,10 @@ class LocationDropdown extends Component {
 
   handleOption = idx => {
     // idx stands for index
-    this.setState({ selectedIdx: idx });
-  };
-
-  getSelectedOption = () => {
-    // An attempt at a getter method...? Might be useful in routing later.
-    return this.state.options[this.state.selectedIdx];
+    this.props.dataCallBack(this.state.options[idx]);
+    this.setState({
+      selectedIdx: idx
+    });
   };
 }
 

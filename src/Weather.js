@@ -25,7 +25,11 @@ class Weather extends Component {
   // callback occurs when there is a change to the slider
   handleSliderUpdate = data => {
     this.setState({ userRange: data });
-    console.log(this.state.userRange);
+    this.props.handleRangeUpdate(data);
+  };
+
+  handleDropdownSelected = data => {
+    this.props.handleDropdownSelected(data);
   };
 
   render(props) {
@@ -47,7 +51,10 @@ class Weather extends Component {
           <TemperatureDisplay info={{ temp: info.temp }} />
           <br />
           <br />
-          <LocationDropDown align="center" />
+          <LocationDropDown
+            dataCallBack={this.handleDropdownSelected}
+            align="center"
+          />
           <br />
           <WeatherSlider
             className="Weather-slider"
