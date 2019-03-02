@@ -1,37 +1,22 @@
 import React, { Component } from "react";
+import DropdownButton from "react-bootstrap/Dropdown";
+import Dropdown from "react-bootstrap/Dropdown";
 
-class LocationDropdown extends React.Component {
-  state = {
-    isOpen: false
-  };
-
-  toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
-
+class LocationDropdown extends Component {
+  state = {};
   render() {
-    const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
     return (
-      <div className="dropdown" onClick={this.toggleOpen}>
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-        >
+      <Dropdown alignRight>
+        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
           Select Desired Weather
-        </button>
-        <div
-          className={menuClass}
-          id="dropdown"
-          aria-labelledby="dropdownMenuButton"
-        >
-          <a className="dropdown-item">Warm</a>
-          <a className="dropdown-item">Cold</a>
-          <a className="dropdown-item">Similar</a>
-        </div>
-        <br />
-        <br />
-      </div>
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item>Similar</Dropdown.Item>
+          <Dropdown.Item>Colder</Dropdown.Item>
+          <Dropdown.Item>Warmer</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
 }
