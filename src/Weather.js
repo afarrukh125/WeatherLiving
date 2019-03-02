@@ -8,8 +8,8 @@ import Thunder from "./resources/weather-icons/thunder.svg";
 import Atmosphere from "./resources/weather-icons/atmosphere.svg";
 import WeatherSlider from "./components/slider/WeatherSlider";
 import LocationDropDown from "./components/LocationDropdown";
-import SearchButton from "./components/SearchButton";
 import "./App.css";
+import Button from "react-bootstrap/Button";
 import TemperatureDisplay from "./components/TemperatureDisplay";
 
 class Weather extends Component {
@@ -54,7 +54,9 @@ class Weather extends Component {
             dataCallBack={this.handleSliderUpdate}
           />
           <p className="description">{this.state.userRange} Miles</p>
-          <SearchButton />
+          <Button href="/results" variant="secondary">
+            Search
+          </Button>
           <br />
           <br />
           <br />
