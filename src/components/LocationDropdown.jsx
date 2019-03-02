@@ -1,39 +1,47 @@
 import React, { Component } from "react";
+import Dropdown from "react-bootstrap/Dropdown";
 
-class LocationDropdown extends React.Component {
+/**
+ * This class is just a wrapper class for the react-bootstrap/Dropdown component. Instead of cluttering our weather component we collapse everything into this.
+ * A similar design pattern has been done for the slider component.
+ */
+
+class LocationDropdown extends Component {
   state = {
-    isOpen: false
-  };
-
-  toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
-
+    selectedIdx: 0,
+    options: ["Select Desired Weather", "Similar", "Warmer", "Colder"]
+  }; // State to store the selected index for this dropdown as well as all the possible values the box can take on
   render() {
-    const menuClass = `dropdown-menu${this.state.isOpen ? " show" : ""}`;
     return (
-      <div className="dropdown" onClick={this.toggleOpen}>
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-        >
-          Select Desired Weather
-        </button>
-        <div
-          className={menuClass}
-          id="dropdown"
-          aria-labelledby="dropdownMenuButton"
-        >
-          <a className="dropdown-item">Warm</a>
-          <a className="dropdown-item">Cold</a>
-          <a className="dropdown-item">Similar</a>
-        </div>
-        <br />
-        <br />
-      </div>
+      <Dropdown alignRight>
+        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+          {this.state.options[this.state.selectedIdx]}
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item eventKey="1" onSelect={this.handleOption}>
+            {this.state.options[1]}
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="2" onSelect={this.handleOption}>
+            {this.state.options[2]}
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="3" onSelect={this.handleOption}>
+            {this.state.options[3]}
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
+
+  handleOption = idx => {
+    // idx stands for index
+    this.setState({ selectedIdx: idx });
+  };
+
+  getSelectedOption = () => {
+    // An attempt at a getter method...? Might be useful in routing later.
+    return this.state.options[this.state.selectedIdx];
+  };
 }
 
 export default LocationDropdown;

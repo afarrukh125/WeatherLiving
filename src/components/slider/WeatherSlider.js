@@ -4,16 +4,10 @@ import "./WeatherSlider.css";
 import React, { Component } from "react";
 
 /**
- * **** YOU CAN EDIT THIS ******
- *
- *
  * This class is just the weather slider (and the text that goes with it)
  * I made it into a separate object to ensure that these two are treated as a single entity
  * Currently it does not work as intended. The slider does move but the text needs to update
  * to the corresponding value of the slider.
- *
- *
- * **************************************************************
  */
 class WeatherSlider extends Component {
   state = {
@@ -45,6 +39,11 @@ class WeatherSlider extends Component {
       </div>
     );
   }
+
+  getCurrent = () => {
+    // Another getter method which might be useful later when routing
+    return this.state.current;
+  };
 }
 
 export default WeatherSlider;
