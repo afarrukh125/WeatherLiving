@@ -46,6 +46,9 @@ class Results extends Component {
         case "Snowy":
           this.findPlaces("Snow", weatherData)
           break;
+        case "Misty":
+          this.findPlaces("Mist", weatherData)
+          break;
         case "Stormy":
           this.findPlaces("Thunderstorm", weatherData)
           this.findPlaces("Atmosphere", weatherData)
@@ -53,16 +56,16 @@ class Results extends Component {
         default:
           return "error";
       }
-
   }
 
   // method finds the desired weather and updates the state
   findPlaces =(weather, cities)=>{
     const list = cities.list
-    console.log("inside: " + list[0].weather[0].main)
+    
     for (let i = 0; i < list.length; i++){
-
+      console.log(list[i].weather[0].main)
       if (list[i].weather[0].main === weather){
+        
         this.setState({ desiredPlaces: [...this.state.desiredPlaces, list[i]] })
       }
     }
@@ -77,7 +80,7 @@ class Results extends Component {
     }
     return name
   }
-  
+
   render() {
     console.log(this.state.desiredPlaces)
     return (
