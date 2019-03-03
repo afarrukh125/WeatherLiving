@@ -64,7 +64,7 @@ class Weather extends Component {
             className="Weather-slider"
             dataCallBack={this.handleSliderUpdate}
           />
-          <p className="description">{this.state.userRange} Miles</p>
+          <p className="description">{this.state.userRange} Kilometers</p>
           <SearchButton
             preferredWeather={this.state.preferredWeather}
             onUpdate={this.handleButtonClick}

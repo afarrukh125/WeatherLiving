@@ -12,7 +12,7 @@ import React, { Component } from "react";
 class WeatherSlider extends Component {
   state = {
     min: 0,
-    max: 1000,
+    max: 3000,
     current: 0
   };
 
