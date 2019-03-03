@@ -80,7 +80,7 @@ class App extends Component {
           preferredWeather: this.state.preferredWeather,
           range: this.state.selectedRange,
           temp: this.state.temp,
-          country: this.state.city,
+          country: this.state.country,
           city: this.state.city,
           rangeCoordiantes : this.getRangeCoordinates()
         }}
