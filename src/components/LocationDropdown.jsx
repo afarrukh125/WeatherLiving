@@ -13,7 +13,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 class LocationDropdown extends Component {
   state = {
     selectedIdx: 0,
-    options: ["Select Desired Weather", "Similar", "Warmer", "Colder"]
+    options: ["Select Desired Weather", "Sunny", "Cloudy", "Rainy", "Snowy", "Stormy"]
   }; // State to store the selected index for this dropdown as well as all the possible values the box can take on
   render() {
     let value = this.state.options[this.state.selectedIdx];
@@ -27,6 +27,8 @@ class LocationDropdown extends Component {
           <Dropdown.Item eventKey="1">{this.state.options[1]}</Dropdown.Item>
           <Dropdown.Item eventKey="2">{this.state.options[2]}</Dropdown.Item>
           <Dropdown.Item eventKey="3">{this.state.options[3]}</Dropdown.Item>
+          <Dropdown.Item eventKey="4">{this.state.options[4]}</Dropdown.Item>
+          <Dropdown.Item eventKey="5">{this.state.options[5]}</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );
