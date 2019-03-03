@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Weather from "./phases/Weather";
 import Results from "./phases/Results";
-import ClearBg from "./resources/weather-backgrounds/clear/clear-bg.svg";
-import ClearBgObject from "./resources/weather-backgrounds/clear/clear-right-obj.svg";
-import SnowBg from "./resources/weather-backgrounds/snow/snow-bg.svg";
-import SnowBgObject from "./resources/weather-backgrounds/snow/snow-bg-obj.svg";
-import RainBg from "./resources/weather-backgrounds/rain/rain-bg.svg";
-import RainBgObject from "./resources/weather-backgrounds/rain/rain-bg-obj.svg";
-import ThunderstormBg from "./resources/weather-backgrounds/thunderstorm/thunderstorm-bg.svg";
-import ThunderstormBgObject from "./resources/weather-backgrounds/thunderstorm/thunderstorm-bg-obj.svg";
+import { setBackground } from "./utils/BackgroundManager";
 
 /**
  * This is the core component.
@@ -102,34 +95,6 @@ class App extends Component {
     });
   }
 
-  // returns a list of svg file depending on the weather.
-  // index 0: the background
-  // index 1: objects found on the background
-  setBackground(weather) {
-    switch (weather) {
-      case "Clear":
-        return [ClearBg, ClearBgObject];
-      case "Rain":
-        return [RainBg, RainBgObject];
-      case "Mist":
-        return [ClearBg, ClearBgObject]; // update
-      case "Drizzle":
-        return [ClearBg, ClearBgObject]; //update
-      case "Clouds":
-        return [ClearBg, ClearBgObject]; //update
-      case "Snow":
-        return [SnowBg, SnowBgObject];
-      case "Fog":
-        return [SnowBg, SnowBgObject]; // update
-      case "Thunderstorm":
-        return [ThunderstormBg, ThunderstormBgObject];
-      case "Atmosphere":
-        return [ClearBg, ClearBgObject]; //update
-      default:
-        return null;
-    }
-  }
-
   render() {
     if (this.state.weather == null) {
       return (
@@ -140,7 +105,7 @@ class App extends Component {
         </h1>
       );
     }
-    const backgroundItems = this.setBackground(this.state.weather);
+    const backgroundItems = setBackground(this.state.weather);
 
     if (backgroundItems == null) {
       console.log(this.state.weather); // Check the console to see what the weather is that does not have an image
