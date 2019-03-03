@@ -10,7 +10,6 @@ import RainBg from "./resources/weather-backgrounds/rain/rain-bg.svg";
 import RainBgObject from "./resources/weather-backgrounds/rain/rain-bg-obj.svg";
 import ThunderstormBg from "./resources/weather-backgrounds/thunderstorm/thunderstorm-bg.svg";
 import ThunderstormBgObject from "./resources/weather-backgrounds/thunderstorm/thunderstorm-bg-obj.svg";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   // state holds data about client's rough location and the current weather.
@@ -24,9 +23,41 @@ class App extends Component {
     max_temp: null,
     min_temp: null,
     weather: null,
-    selectedRange: 0
+    selectedRange: 0,
+    preferredWeather: null,
+    phase: 0
   };
 
+  getPhases() {
+    // This is an array of our phases!
+    // These are the objects to be rendered depending on the phase.
+    return [
+      <Weather
+        handleRangeUpdate={this.updateRange}
+        handleDropdownSelected={
+          this.updatePreference // For user to update location preference
+        }
+        updatePhase={this.updatePhase}
+        info={{
+          country: this.state.country,
+          city: this.state.city,
+          weather: this.state.weather,
+          temp: this.state.temp,
+          max_temp: this.state.max_temp,
+          min_temp: this.state.min_temp
+        }}
+      />,
+      <Results
+        info={{
+          preferredWeather: this.state.preferredWeather,
+          range: this.state.selectedRange,
+          temp: this.state.temp,
+          country: this.state.city,
+          city: this.state.city
+        }}
+      />
+    ];
+  }
   // async method fetches JSON data from 2 APIs. One for client info and another for weather info.
   // state of component is changed after each API call
   async componentDidMount() {
@@ -110,19 +141,12 @@ class App extends Component {
         </h1>
       );
     }
-
     return (
       <div
         className="App"
         style={{ backgroundImage: `url(${backgroundItems[0]})` }}
       >
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={this.getWeather} />
-            <Route path="/results" component={this.getResultsPage} />
-            <Route component={this.getErrorMessage} />
-          </Switch>
-        </BrowserRouter>
+        {this.getPhases()[this.state.phase]}
         <div>
           <img
             src={backgroundItems[1]}
@@ -133,25 +157,6 @@ class App extends Component {
       </div>
     );
   }
-
-  getWeather = () => {
-    return (
-      <Weather
-        handleRangeUpdate={this.updateRange}
-        handleDropdownSelected={
-          this.updatePreference // For user to update location preference
-        }
-        info={{
-          country: this.state.country,
-          city: this.state.city,
-          weather: this.state.weather,
-          temp: this.state.temp,
-          max_temp: this.state.max_temp,
-          min_temp: this.state.min_temp
-        }}
-      />
-    );
-  };
 
   updateRange = data => {
     this.setState({ selectedRange: data });
@@ -173,6 +178,10 @@ class App extends Component {
 
   getErrorMessage = () => {
     return <h1>404 Not found</h1>;
+  };
+
+  updatePhase = val => {
+    this.setState({ phase: val });
   };
 }
 
