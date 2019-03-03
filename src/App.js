@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Weather from "./phases/Weather";
 import Results from "./phases/Results";
-import { setBackground } from "./utils/BackgroundManager";
+import { setBackground } from "./utils/AssetsManager";
 
 /**
  * This is the core component.

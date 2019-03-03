@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import Clear from "../resources/weather-icons/clear.svg";
-import Cloud from "../resources/weather-icons/cloud.svg";
-import Rain from "../resources/weather-icons/rain.svg";
-import Drizzle from "../resources/weather-icons/drizzle.svg";
-import Snow from "../resources/weather-icons/snow.svg";
-import Thunder from "../resources/weather-icons/thunder.svg";
-import Atmosphere from "../resources/weather-icons/atmosphere.svg";
+import { renderIcon } from "../utils/AssetsManager";
 import WeatherSlider from "../components/slider/WeatherSlider";
 import LocationDropDown from "../components/LocationDropdown";
 import "../App.css";
@@ -48,7 +42,7 @@ class Weather extends Component {
       <div className="Weather-info">
         <div className="main-info">
           <img
-            src={this.renderIcon(info.weather)}
+            src={renderIcon(info.weather)}
             alt="weather icon"
             width="200px"
           />
@@ -81,31 +75,6 @@ class Weather extends Component {
         </div>
       </div>
     );
-  }
-  // returns svg file based on the current weather
-  renderIcon(weather) {
-    switch (weather) {
-      case "Clear":
-        return Clear;
-      case "Rain":
-        return Rain;
-      case "Drizzle":
-        return Drizzle;
-      case "Clouds":
-        return Cloud;
-      case "Mist":
-        return Cloud; // Update
-      case "Fog":
-        return Cloud; // Update
-      case "Snow":
-        return Snow;
-      case "Thunderstorm":
-        return Thunder;
-      case "Atmosphere":
-        return Atmosphere;
-      default:
-        return "error";
-    }
   }
 }
 
