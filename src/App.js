@@ -27,6 +27,30 @@ class App extends Component {
     phase: 0
   };
 
+
+  // converts radian to degrees
+  radianToDegrees =(val)=> {
+    return val * (180 / Math.PI);
+  }
+
+  getRangeCoordinates=()=>{
+    //this is where the range will be calculated 
+    // api only deals with longitudinal and lataitudinal values. 
+    // this methods converts km to long and lat. Returns 4 points
+    const latToKmVal = 110.574
+    const lonToKmVal = 111.320
+
+    const latDelta = this.state.selectedRange / latToKmVal
+    const lonDelta = this.state.selectedRange/ (lonToKmVal * this.radianToDegrees(Math.cos(this.state.lat)))
+
+    const left = this.state.lon - lonDelta 
+    const right = this.state.lon + lonDelta
+    const top = this.state.lat + latDelta
+    const bottom = this.state.lat - latDelta
+
+    return {left : left, bottom : bottom , right : right,  top : top}
+  }
+
   /**
    * This returns an array to correspond to which phase we are in
    * Phase 0: Display weather and allow user to enter data
@@ -57,7 +81,8 @@ class App extends Component {
           range: this.state.selectedRange,
           temp: this.state.temp,
           country: this.state.city,
-          city: this.state.city
+          city: this.state.city,
+          rangeCoordiantes : this.getRangeCoordinates()
         }}
       />
     ];
