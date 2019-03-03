@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+/**
+ * A class was needed for this because it is clickable and allows the user to set
+ * whether they want to see the temperature in fahrenheit or celcius.
+ */
 class TemperatureDisplay extends Component {
   state = {
     isCelcius: true

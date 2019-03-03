@@ -1,23 +1,28 @@
 import React, { Component } from "react";
-import Clear from "./resources/weather-icons/clear.svg";
-import Cloud from "./resources/weather-icons/cloud.svg";
-import Rain from "./resources/weather-icons/rain.svg";
-import Drizzle from "./resources/weather-icons/drizzle.svg";
-import Snow from "./resources/weather-icons/snow.svg";
-import Thunder from "./resources/weather-icons/thunder.svg";
-import Atmosphere from "./resources/weather-icons/atmosphere.svg";
-import WeatherSlider from "./components/slider/WeatherSlider";
-import LocationDropDown from "./components/LocationDropdown";
-import "./App.css";
-import Button from "react-bootstrap/Button";
-import TemperatureDisplay from "./components/TemperatureDisplay";
+import Clear from "../resources/weather-icons/clear.svg";
+import Cloud from "../resources/weather-icons/cloud.svg";
+import Rain from "../resources/weather-icons/rain.svg";
+import Drizzle from "../resources/weather-icons/drizzle.svg";
+import Snow from "../resources/weather-icons/snow.svg";
+import Thunder from "../resources/weather-icons/thunder.svg";
+import Atmosphere from "../resources/weather-icons/atmosphere.svg";
+import WeatherSlider from "../components/slider/WeatherSlider";
+import LocationDropDown from "../components/LocationDropdown";
+import "../App.css";
+import TemperatureDisplay from "../components/TemperatureDisplay";
+import SearchButton from "../components/SearchButton";
 
+/**
+ * This component is responsible for displaying the weather to the user.
+ * It contains the form to select the desired weather and the range
+ */
 class Weather extends Component {
   // state holds data about clients rough location and the current weather.
   // default is null. API call will change it
 
   state = {
-    userRange: 0
+    userRange: 0,
+    preferredWeather: null
   };
 
   // method is sent to the WeatherSlider component as a prop
@@ -30,6 +35,7 @@ class Weather extends Component {
 
   handleDropdownSelected = data => {
     this.props.handleDropdownSelected(data);
+    this.setState({ preferredWeather: data });
   };
 
   handleButtonClick = () => {
@@ -65,9 +71,10 @@ class Weather extends Component {
             dataCallBack={this.handleSliderUpdate}
           />
           <p className="description">{this.state.userRange} Miles</p>
-          <Button onClick={this.handleButtonClick} variant="secondary">
-            Search
-          </Button>
+          <SearchButton
+            preferredWeather={this.state.preferredWeather}
+            onUpdate={this.handleButtonClick}
+          />
           <br />
           <br />
           <br />
