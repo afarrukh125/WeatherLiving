@@ -9,7 +9,33 @@ import Button from "react-bootstrap/Button";
 class SearchButton extends Component {
   state = {};
   render() {
-    return <Button variant="secondary">Search</Button>;
+    // Only return selectable button if the preferred weather has been chosen.
+    // The results component will deal with the range being set to small values
+    // So we do not worry about it here.
+    if (this.props.preferredWeather != null) {
+      return (
+        <Button
+          onClick={() => {
+            this.props.onUpdate(1);
+          }}
+          variant="secondary"
+        >
+          Search
+        </Button>
+      );
+    }
+
+    return (
+      <Button
+        onClick={() => {
+          this.props.onUpdate(1);
+        }}
+        variant="secondary"
+        disabled
+      >
+        Search
+      </Button>
+    );
   }
 }
 

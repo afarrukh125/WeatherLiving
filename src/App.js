@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Weather from "./Weather";
-import Results from "./Results";
+import Weather from "./phases/Weather";
+import Results from "./phases/Results";
 import ClearBg from "./resources/weather-backgrounds/clear/clear-bg.svg";
 import ClearBgObject from "./resources/weather-backgrounds/clear/clear-right-obj.svg";
 import SnowBg from "./resources/weather-backgrounds/snow/snow-bg.svg";
@@ -170,14 +170,6 @@ class App extends Component {
     // Strange behaviour but data is the live value
     // Although it should still work fine.
     // this.state.preferredWeather is set selected value.
-  };
-
-  getResultsPage = () => {
-    return <Results />;
-  };
-
-  getErrorMessage = () => {
-    return <h1>404 Not found</h1>;
   };
 
   updatePhase = val => {

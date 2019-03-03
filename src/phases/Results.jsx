@@ -5,10 +5,12 @@ class Results extends Component {
   render() {
     console.log(this.props);
     return (
-      <h1>
-        Distance: {this.props.info.range} Preferred Weather:{" "}
-        {this.props.info.preferredWeather}{" "}
-      </h1>
+      <div>
+        <h1>
+          Distance: {this.props.info.range} Preferred Weather:{" "}
+          {this.props.info.preferredWeather}{" "}
+        </h1>
+      </div>
     );
   }
 }
