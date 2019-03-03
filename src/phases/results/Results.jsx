@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
-import config from "../config";
+import config from "../../config";
 
 /**
  * This is the page on which results will be shown based on the preferences
  * chosen in the first phase
- *
- * ***************
  */
 class Results extends Component {
   state = {
     desiredPlaces: []
   };
 
-  // fetch data from api
-  // all the places within a certain range
-  // then removes the places that do not have the desired weather by calling the 'findplace' method
+  /**
+   * fetch data from api
+   * all the places within a certain range
+   * then removes the places that do not have the desired weather by calling the 'findplace' method
+   */
   async componentDidMount() {
     const coordinates = this.props.info.rangeCoordiantes;
 
@@ -61,7 +61,9 @@ class Results extends Component {
     }
   }
 
-  // method finds the desired weather and updates the state
+  // This method finds the desired weather based on the preferred weather
+  // It appends each result from the list of cities that matches the preferred weather
+  // to the array contained in the state of this component
   findPlaces = (weather, cities) => {
     const list = cities.list;
 
@@ -78,6 +80,13 @@ class Results extends Component {
   // temporary method to display the results
   displayResults() {
     let name = [];
+
+    if (this.state.desiredPlaces.length > 0) {
+      name.push(<h3>Places that have the desired weather: </h3>);
+    } else {
+      name.push(<h3>There were no results matching this query.</h3>);
+    }
+
     for (let i = 0; i < this.state.desiredPlaces.length; i++) {
       name.push(<p>{this.state.desiredPlaces[i].name}</p>);
     }
@@ -89,10 +98,9 @@ class Results extends Component {
     return (
       <div>
         <h1>
-          Distance: {this.props.info.range} Preferred Weather:{" "}
+          Distance: {this.props.info.range} Kilometres | Preferred Weather:{" "}
           {this.props.info.preferredWeather}{" "}
-        </h1>
-        <h3>Places that have the desired weather: </h3>
+        </h1>{" "}
         {this.displayResults()}
         <Button variant="secondary" onClick={this.handleBack}>
           Back
@@ -101,6 +109,9 @@ class Results extends Component {
     );
   }
 
+  /**
+   * Callback function to update the phase once the back button is pressed
+   */
   handleBack = () => {
     this.props.updatePhase(0);
   };

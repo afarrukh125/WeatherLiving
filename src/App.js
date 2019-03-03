@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Weather from "./phases/Weather";
-import Results from "./phases/Results";
+import Weather from "./phases/weather/Weather";
+import Results from "./phases/results/Results";
 import { setBackground } from "./utils/AssetsManager";
 import config from "./config";
 

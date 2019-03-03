@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { renderIcon } from "../utils/AssetsManager";
-import WeatherSlider from "../components/slider/WeatherSlider";
-import LocationDropDown from "../components/LocationDropdown";
-import "../App.css";
-import TemperatureDisplay from "../components/TemperatureDisplay";
-import SearchButton from "../components/SearchButton";
+import { renderIcon } from "../../utils/AssetsManager";
+import WeatherSlider from "../../components/slider/WeatherSlider";
+import LocationDropDown from "../../components/LocationDropdown";
+import "../../App.css";
+import TemperatureDisplay from "../../components/TemperatureDisplay";
+import SearchButton from "../../components/SearchButton";
 
 /**
  * This component is responsible for displaying the weather to the user.
