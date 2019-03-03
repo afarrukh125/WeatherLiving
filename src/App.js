@@ -3,6 +3,7 @@ import "./App.css";
 import Weather from "./phases/Weather";
 import Results from "./phases/Results";
 import { setBackground } from "./utils/AssetsManager";
+import config from "./config";
 
 /**
  * This is the core component.
@@ -27,29 +28,30 @@ class App extends Component {
     phase: 0
   };
 
-
   // converts radian to degrees
-  radianToDegrees =(val)=> {
+  radianToDegrees = val => {
     return val * (180 / Math.PI);
-  }
+  };
 
-  getRangeCoordinates=()=>{
-    //this is where the range will be calculated 
-    // api only deals with longitudinal and lataitudinal values. 
+  getRangeCoordinates = () => {
+    //this is where the range will be calculated
+    // api only deals with longitudinal and lataitudinal values.
     // this methods converts km to long and lat. Returns 4 points
-    const latToKmVal = 110.574
-    const lonToKmVal = 111.320
+    const latToKmVal = 110.574;
+    const lonToKmVal = 111.32;
 
-    const latDelta = this.state.selectedRange / latToKmVal
-    const lonDelta = this.state.selectedRange/ (lonToKmVal * this.radianToDegrees(Math.cos(this.state.lat)))
+    const latDelta = this.state.selectedRange / latToKmVal;
+    const lonDelta =
+      this.state.selectedRange /
+      (lonToKmVal * this.radianToDegrees(Math.cos(this.state.lat)));
 
-    const left = this.state.lon - lonDelta 
-    const right = this.state.lon + lonDelta
-    const top = this.state.lat + latDelta
-    const bottom = this.state.lat - latDelta
+    const left = this.state.lon - lonDelta;
+    const right = this.state.lon + lonDelta;
+    const top = this.state.lat + latDelta;
+    const bottom = this.state.lat - latDelta;
 
-    return {left : left, bottom : bottom , right : right,  top : top}
-  }
+    return { left: left, bottom: bottom, right: right, top: top };
+  };
 
   /**
    * This returns an array to correspond to which phase we are in
@@ -82,7 +84,7 @@ class App extends Component {
           temp: this.state.temp,
           country: this.state.country,
           city: this.state.city,
-          rangeCoordiantes : this.getRangeCoordinates()
+          rangeCoordiantes: this.getRangeCoordinates()
         }}
       />
     ];
@@ -102,7 +104,7 @@ class App extends Component {
     });
 
     // fetch data about the weather and update the component state
-    const weatherApiKey = "bde5c5ae7c899ef46ae5fe9e8094af6a";
+    const weatherApiKey = config.weatherKey;
     const weatherURL =
       "http://api.openweathermap.org/data/2.5/weather?lat=" +
       this.state.lat +
