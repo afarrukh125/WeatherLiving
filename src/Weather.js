@@ -32,6 +32,10 @@ class Weather extends Component {
     this.props.handleDropdownSelected(data);
   };
 
+  handleButtonClick = () => {
+    this.props.updatePhase(1);
+  };
+
   render(props) {
     let info = this.props.info;
     return (
@@ -61,7 +65,7 @@ class Weather extends Component {
             dataCallBack={this.handleSliderUpdate}
           />
           <p className="description">{this.state.userRange} Miles</p>
-          <Button href="/results" variant="secondary">
+          <Button onClick={this.handleButtonClick} variant="secondary">
             Search
           </Button>
           <br />
