@@ -12,6 +12,10 @@ import "../App.css";
 import TemperatureDisplay from "../components/TemperatureDisplay";
 import SearchButton from "../components/SearchButton";
 
+/**
+ * This component is responsible for displaying the weather to the user.
+ * It contains the form to select the desired weather and the range
+ */
 class Weather extends Component {
   // state holds data about clients rough location and the current weather.
   // default is null. API call will change it

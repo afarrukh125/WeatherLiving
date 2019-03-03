@@ -11,6 +11,12 @@ import RainBgObject from "./resources/weather-backgrounds/rain/rain-bg-obj.svg";
 import ThunderstormBg from "./resources/weather-backgrounds/thunderstorm/thunderstorm-bg.svg";
 import ThunderstormBgObject from "./resources/weather-backgrounds/thunderstorm/thunderstorm-bg-obj.svg";
 
+/**
+ * This is the core component.
+ * This holds all the information that the user enters
+ * and is responsible for delivering the components depending on
+ * which stage of the application we are at
+ */
 class App extends Component {
   // state holds data about client's rough location and the current weather.
   // default is null. API call will change it
@@ -28,9 +34,13 @@ class App extends Component {
     phase: 0
   };
 
+  /**
+   * This returns an array to correspond to which phase we are in
+   * Phase 0: Display weather and allow user to enter data
+   * Phase 1: Display results based on this data
+   * Phase 2: Redirect to booking site
+   */
   getPhases() {
-    // This is an array of our phases!
-    // These are the objects to be rendered depending on the phase.
     return [
       <Weather
         handleRangeUpdate={this.updateRange}
@@ -48,6 +58,7 @@ class App extends Component {
         }}
       />,
       <Results
+        updatePhase={this.updatePhase}
         info={{
           preferredWeather: this.state.preferredWeather,
           range: this.state.selectedRange,
@@ -158,20 +169,23 @@ class App extends Component {
     );
   }
 
+  /**
+   * Callback function for when the slider is updated
+   */
   updateRange = data => {
     this.setState({ selectedRange: data });
-    console.log(this.state.selectedRange);
-    // Data is now stored in this class.
   };
 
+  /**
+   * Callback function for updating the user's weather preference
+   */
   updatePreference = data => {
     this.setState({ preferredWeather: data });
-    // Typing console.log(this.state.preferredWeather) returns value before data
-    // Strange behaviour but data is the live value
-    // Although it should still work fine.
-    // this.state.preferredWeather is set selected value.
   };
 
+  /**
+   * Callback function for updating which phase we are in.
+   */
   updatePhase = val => {
     this.setState({ phase: val });
   };

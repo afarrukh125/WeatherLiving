@@ -4,6 +4,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 /**
  * This class is just a wrapper class for the react-bootstrap/Dropdown component. Instead of cluttering our weather component we collapse everything into this.
  * A similar design pattern has been done for the slider component.
+ *
+ * The reason why this was done is so that we can keep track of the selected option
+ * We also want to return the data from this dropdown back to App.js so we can use the data from here
+ * in the other phases
  */
 
 class LocationDropdown extends Component {
