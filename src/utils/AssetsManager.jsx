@@ -6,6 +6,13 @@ import RainBg from "../resources/weather-backgrounds/rain/rain-bg.svg";
 import RainBgObject from "../resources/weather-backgrounds/rain/rain-bg-obj.svg";
 import ThunderstormBg from "../resources/weather-backgrounds/thunderstorm/thunderstorm-bg.svg";
 import ThunderstormBgObject from "../resources/weather-backgrounds/thunderstorm/thunderstorm-bg-obj.svg";
+import Clear from "../resources/weather-icons/clear.svg";
+import Cloud from "../resources/weather-icons/cloud.svg";
+import Rain from "../resources/weather-icons/rain.svg";
+import Drizzle from "../resources/weather-icons/drizzle.svg";
+import Snow from "../resources/weather-icons/snow.svg";
+import Thunder from "../resources/weather-icons/thunder.svg";
+import Atmosphere from "../resources/weather-icons/atmosphere.svg";
 
 // returns a list of svg file depending on the weather.
 // index 0: the background
@@ -36,4 +43,30 @@ export function setBackground(weather) {
   }
 }
 
-export default setBackground;
+// returns svg file based on the current weather
+export function renderIcon(weather) {
+  switch (weather) {
+    case "Clear":
+      return Clear;
+    case "Rain":
+      return Rain;
+    case "Drizzle":
+      return Drizzle;
+    case "Clouds":
+      return Cloud;
+    case "Mist":
+      return Cloud; // Update
+    case "Fog":
+      return Cloud; // Update
+    case "Snow":
+      return Snow;
+    case "Thunderstorm":
+      return Thunder;
+    case "Atmosphere":
+      return Atmosphere;
+    default:
+      return "error";
+  }
+}
+
+export default { setBackground, renderIcon };
