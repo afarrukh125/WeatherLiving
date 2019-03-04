@@ -1,8 +1,10 @@
 .App {
   position: absolute;
   text-align: center;
-  height: 100vh;
+  height: auto;
   width: 100vw;
+  z-index: -1;
+  background-attachment: fixed;
 }
 
 .App-header {
@@ -17,11 +19,11 @@
 }
 
 .App-bg-object {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
-  z-index: 0;
+  z-index: -1;
 }
 
 .Weather-info {

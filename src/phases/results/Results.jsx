@@ -94,6 +94,11 @@ class Results extends Component {
   }
 
   render() {
+    let padding = [];
+    const VALUE = 30;
+    for (let i = 0; i < VALUE - this.state.desiredPlaces.length; i++) {
+      padding.push(<br />);
+    }
     console.log(this.state.desiredPlaces);
     return (
       <div>
@@ -105,6 +110,7 @@ class Results extends Component {
         <Button variant="secondary" onClick={this.handleBack}>
           Back
         </Button>
+        {padding}
       </div>
     );
   }
