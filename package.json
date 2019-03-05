@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "all-the-cities": "^2.0.1",
     "bootstrap": "^4.3.1",
+    "countries-api": "^2.0.2",
+    "country-iso": "^2.0.5",
+    "nearby-big-cities": "^1.0.0",
+    "nearby-cities": "^1.1.0",
     "rc-slider": "^8.6.5",
     "react": "^16.7.0",
     "react-bootstrap": "^1.0.0-beta.5",
