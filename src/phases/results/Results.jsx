@@ -108,6 +108,7 @@ class Results extends Component {
             }}
           />
           <br />
+          <br />
         </div>
       );
     }
@@ -121,7 +122,6 @@ class Results extends Component {
    *
    */
   render() {
-    const VALUE = 30;
     const weather = parseWeatherFromPreference(
       this.props.info.preferredWeather
     );
@@ -155,6 +155,7 @@ class Results extends Component {
             </h2>{" "}
           </div>
           {this.displayResults()}
+          <br />
           <Button variant="secondary" onClick={this.handleBack}>
             Back
           </Button>

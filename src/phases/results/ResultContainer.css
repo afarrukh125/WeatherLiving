@@ -1,2 +1,6 @@
 .resultBlock {
+  border: 1px solid black;
+  display: inline-block;
+  width: 95%;
+  border-radius: 10px;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Results.css";
+import "./ResultContainer.css";
 
 /**
  * This will hold each individual result.
@@ -38,8 +38,9 @@ class ResultContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="resultBlock">
         <a href={this.state.skyscannerURL}>Take me to {this.props.name}</a>
+        <br />
       </div>
     );
   }
