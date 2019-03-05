@@ -2,3 +2,33 @@
   border: 1px solid black;
   width: 80%;
 }
+
+.inputDisplay {
+  color: white;
+}
+
+#noResults {
+  color: white;
+}
+
+#prefWeather {
+  font-size: 72;
+}
+
+.many-results {
+  position: absolute;
+  text-align: center;
+  height: auto;
+  width: 100vw;
+  z-index: -1;
+  background-attachment: fixed;
+}
+
+.few-results {
+  position: absolute;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  background-attachment: fixed;
+}

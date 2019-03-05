@@ -69,4 +69,37 @@ export function renderIcon(weather) {
   }
 }
 
-export default { setBackground, renderIcon };
+/**
+ * Returns a weather label THAT IS CONSISTENT WITH THE API
+ * based on the preference.
+ *
+ * The returned value is then used in the phase 1 (results)
+ * to update the background.
+ *
+ * The preference value can be one of the values from the dropdown menu
+ * Essentially this means that the default case can't be reached.
+ *
+ * As mentioned in coursework 1 in the design section, using dropdown
+ * menu limits the user input. This is one such case where this has
+ * proven useful.
+ */
+export function parseWeatherFromPreference(preference) {
+  switch (preference) {
+    case "Sunny":
+      return "Clear";
+    case "Cloudy":
+      return "Clouds";
+    case "Rainy":
+      return "Rain";
+    case "Snowy":
+      return "Snow";
+    case "Misty":
+      return "Atmosphere";
+    case "Stormy":
+      return "Thunderstorm";
+    default:
+      return null;
+  }
+}
+
+export default { setBackground, renderIcon, parseWeatherFromPreference };

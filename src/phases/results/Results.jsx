@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import ResultContainer from "./ResultContainer";
 import config from "../../config";
+import "./Results.css";
+import {
+  setBackground,
+  parseWeatherFromPreference
+} from "../../utils/AssetsManager";
 
 /**
  * This is the page on which results will be shown based on the preferences
@@ -82,16 +87,17 @@ class Results extends Component {
   displayResults() {
     let name = [];
 
-    if (this.state.desiredPlaces.length > 0) {
-      name.push(<h3>Places that have the desired weather: </h3>);
-    } else {
-      name.push(<h3>There were no results matching this query.</h3>);
+    if (this.state.desiredPlaces.length === 0) {
+      name.push(
+        <h3 id="noResults">There were no results matching this query.</h3>
+      );
     }
 
     for (let i = 0; i < this.state.desiredPlaces.length; i++) {
       name.push(
         <div>
           <ResultContainer
+            className="resContainer"
             name={this.state.desiredPlaces[i].name}
             info={{
               origin_geo: this.props.info.geolocation,
@@ -108,25 +114,58 @@ class Results extends Component {
     return name;
   }
 
+  /**
+   * This method renders this component and the list of results from earlier
+   * The components in this part of the code include the divs that display the user input,
+   * each individual result (from the list above), and the button to allow user to go back
+   *
+   */
   render() {
-    let padding = [];
     const VALUE = 30;
-    for (let i = 0; i < VALUE - this.state.desiredPlaces.length; i++) {
-      padding.push(<br />);
-    }
-    console.log(this.state.desiredPlaces);
-    console.log("Results" + this.props.info.geolocation);
+    const weather = parseWeatherFromPreference(
+      this.props.info.preferredWeather
+    );
+    console.log(this.props.info.preferredWeather);
+    const backgroundItems = setBackground(weather);
+    // We must decide the style for the results page dynamically
+    // This is why we could not have used an external style sheet
+    // The idea is that if there are a few results then we set the results page to be fixed height
+    // If there are many results then we scale the height of the page to automatically align with the number of results
+    // The constant "decider" is the value that the ternary operator uses to decide which className to use
+    const decider = 10;
+    let resultClass =
+      this.state.desiredPlaces.length > decider
+        ? "many-results"
+        : "few-results";
+    // console.log(this.state.desiredPlaces);
+    // console.log("Results" + this.props.info.geolocation);
     return (
-      <div>
-        <h1>
-          Distance: {this.props.info.range} Kilometres | Preferred Weather:{" "}
-          {this.props.info.preferredWeather}{" "}
-        </h1>{" "}
-        {this.displayResults()}
-        <Button variant="secondary" onClick={this.handleBack}>
-          Back
-        </Button>
-        {padding}
+      <div
+        className={resultClass}
+        style={{ backgroundImage: `url(${backgroundItems[0]})` }}
+      >
+        <div>
+          <div className="inputDisplay">
+            <h1 id="prefWeather">
+              <b>{this.props.info.preferredWeather}</b>
+            </h1>
+            <h2>
+              <b>WITHIN </b>
+              {this.props.info.range} MILES{" "}
+            </h2>{" "}
+          </div>
+          {this.displayResults()}
+          <Button variant="secondary" onClick={this.handleBack}>
+            Back
+          </Button>
+          <div>
+            <img
+              src={backgroundItems[1]}
+              alt="weather background object"
+              className="App-bg-object"
+            />
+          </div>
+        </div>
       </div>
     );
   }

@@ -62,6 +62,7 @@ class App extends Component {
   getPhases() {
     return [
       <Weather
+        weather={this.state.weather}
         handleRangeUpdate={this.updateRange}
         handleDropdownSelected={
           this.updatePreference // For user to update location preference
@@ -79,7 +80,7 @@ class App extends Component {
       <Results
         updatePhase={this.updatePhase}
         info={{
-          geolocation : [this.state.lat, this.state.lon], //[lat, long]
+          geolocation: [this.state.lat, this.state.lon], //[lat, long]
           preferredWeather: this.state.preferredWeather,
           range: this.state.selectedRange,
           temp: this.state.temp,
@@ -124,16 +125,16 @@ class App extends Component {
   }
 
   render() {
+    const backgroundItems = setBackground(this.state.weather);
     if (this.state.weather == null) {
       return (
         <h1>
           {" "}
-          loading ... If this takes too long, ensure your adblocker is not
+          Loading ... If this takes too long, ensure your adblocker is not
           blocking this website.
         </h1>
       );
     }
-    const backgroundItems = setBackground(this.state.weather);
 
     if (backgroundItems == null) {
       console.log(this.state.weather); // Check the console to see what the weather is that does not have an image
@@ -145,21 +146,7 @@ class App extends Component {
         </h1>
       );
     }
-    return (
-      <div
-        className="App"
-        style={{ backgroundImage: `url(${backgroundItems[0]})` }}
-      >
-        {this.getPhases()[this.state.phase]}
-        <div>
-          <img
-            src={backgroundItems[1]}
-            alt="weather background object"
-            className="App-bg-object"
-          />
-        </div>
-      </div>
-    );
+    return <div>{this.getPhases()[this.state.phase]}</div>;
   }
 
   /**
