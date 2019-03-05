@@ -108,7 +108,7 @@ class Results extends Component {
         <ResultContainer 
         info={{
           origin_geo : this.props.info.geolocation,
-          destination_geo : [35.890522, 14.441921]
+          destination_geo : [46.227638, 2.213749]
         }}/>
         <h1>
           Distance: {this.props.info.range} Kilometres | Preferred Weather:{" "}

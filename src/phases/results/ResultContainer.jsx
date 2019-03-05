@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 class ResultContainer extends Component {
   state = {
-    originIata : null,
-    destinationIata : null,
     skyscannerURL : null
   }; 
 
@@ -23,8 +21,6 @@ class ResultContainer extends Component {
     const destionationData = await destinationIataResponse.json();
 
     this.setState({
-      originIata : originIataData.IATA,
-      destinationIata : destionationData.IATA,
       skyscannerURL : "https://www.skyscanner.net/transport/flights/" + originIataData.IATA + "/" + destionationData.IATA
     })
   }
