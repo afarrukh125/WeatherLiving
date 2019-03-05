@@ -92,16 +92,6 @@ class Weather extends Component {
               preferredWeather={this.state.preferredWeather}
               onUpdate={this.handleButtonClick}
             />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
           </div>
           <div>
             <img

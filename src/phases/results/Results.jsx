@@ -121,24 +121,27 @@ class Results extends Component {
    *
    */
   render() {
-    let padding = [];
     const VALUE = 30;
     const weather = parseWeatherFromPreference(
       this.props.info.preferredWeather
     );
     console.log(this.props.info.preferredWeather);
     const backgroundItems = setBackground(weather);
-    // We had conflicting CSS when either too little or too many results are shown
-    // For this reason, we had to use <br/> to extend the background
-    // The below loop does this based on the number of places that are to be shown
-    for (let i = 0; i < VALUE - this.state.desiredPlaces.length; i++) {
-      padding.push(<br />);
-    }
+    // We must decide the style for the results page dynamically
+    // This is why we could not have used an external style sheet
+    // The idea is that if there are a few results then we set the results page to be fixed height
+    // If there are many results then we scale the height of the page to automatically align with the number of results
+    // The constant "decider" is the value that the ternary operator uses to decide which className to use
+    const decider = 10;
+    let resultClass =
+      this.state.desiredPlaces.length > decider
+        ? "many-results"
+        : "few-results";
     // console.log(this.state.desiredPlaces);
     // console.log("Results" + this.props.info.geolocation);
     return (
       <div
-        className="ResultComponent"
+        className={resultClass}
         style={{ backgroundImage: `url(${backgroundItems[0]})` }}
       >
         <div>
@@ -162,7 +165,6 @@ class Results extends Component {
               className="App-bg-object"
             />
           </div>
-          {padding}
         </div>
       </div>
     );
