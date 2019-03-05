@@ -79,6 +79,7 @@ class App extends Component {
       <Results
         updatePhase={this.updatePhase}
         info={{
+          geolocation : [this.state.lat, this.state.lon], //[lat, long]
           preferredWeather: this.state.preferredWeather,
           range: this.state.selectedRange,
           temp: this.state.temp,

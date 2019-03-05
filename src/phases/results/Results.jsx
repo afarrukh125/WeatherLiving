@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import ResultContainer from "./ResultContainer";
 import config from "../../config";
 
 /**
@@ -100,8 +101,15 @@ class Results extends Component {
       padding.push(<br />);
     }
     console.log(this.state.desiredPlaces);
+      console.log("Results" + this.props.info.geolocation)
     return (
+      
       <div>
+        <ResultContainer 
+        info={{
+          origin_geo : this.props.info.geolocation,
+          destination_geo : [46.227638, 2.213749]
+        }}/>
         <h1>
           Distance: {this.props.info.range} Kilometres | Preferred Weather:{" "}
           {this.props.info.preferredWeather}{" "}
