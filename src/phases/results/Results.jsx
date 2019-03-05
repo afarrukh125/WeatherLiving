@@ -3,6 +3,10 @@ import Button from "react-bootstrap/Button";
 import ResultContainer from "./ResultContainer";
 import config from "../../config";
 import "./Results.css";
+import {
+  setBackground,
+  parseWeatherFromPreference
+} from "../../utils/AssetsManager";
 
 /**
  * This is the page on which results will be shown based on the preferences
@@ -83,7 +87,7 @@ class Results extends Component {
   displayResults() {
     let name = [];
 
-    if (this.state.desiredPlaces.length == 0) {
+    if (this.state.desiredPlaces.length === 0) {
       name.push(
         <h3 id="noResults">There were no results matching this query.</h3>
       );
@@ -119,30 +123,47 @@ class Results extends Component {
   render() {
     let padding = [];
     const VALUE = 30;
+    const weather = parseWeatherFromPreference(
+      this.props.info.preferredWeather
+    );
+    console.log(this.props.info.preferredWeather);
+    const backgroundItems = setBackground(weather);
     // We had conflicting CSS when either too little or too many results are shown
     // For this reason, we had to use <br/> to extend the background
     // The below loop does this based on the number of places that are to be shown
     for (let i = 0; i < VALUE - this.state.desiredPlaces.length; i++) {
       padding.push(<br />);
     }
-    console.log(this.state.desiredPlaces);
-    console.log("Results" + this.props.info.geolocation);
+    // console.log(this.state.desiredPlaces);
+    // console.log("Results" + this.props.info.geolocation);
     return (
-      <div>
-        <div className="inputDisplay">
-          <h1 id="prefWeather">
-            <b>{this.props.info.preferredWeather}</b>
-          </h1>
-          <h2>
-            <b>WITHIN </b>
-            {this.props.info.range} MILES{" "}
-          </h2>{" "}
+      <div
+        className="ResultComponent"
+        style={{ backgroundImage: `url(${backgroundItems[0]})` }}
+      >
+        <div>
+          <div className="inputDisplay">
+            <h1 id="prefWeather">
+              <b>{this.props.info.preferredWeather}</b>
+            </h1>
+            <h2>
+              <b>WITHIN </b>
+              {this.props.info.range} MILES{" "}
+            </h2>{" "}
+          </div>
+          {this.displayResults()}
+          <Button variant="secondary" onClick={this.handleBack}>
+            Back
+          </Button>
+          <div>
+            <img
+              src={backgroundItems[1]}
+              alt="weather background object"
+              className="App-bg-object"
+            />
+          </div>
+          {padding}
         </div>
-        {this.displayResults()}
-        <Button variant="secondary" onClick={this.handleBack}>
-          Back
-        </Button>
-        {padding}
       </div>
     );
   }
