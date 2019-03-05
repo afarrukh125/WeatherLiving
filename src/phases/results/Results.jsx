@@ -78,7 +78,7 @@ class Results extends Component {
     }
   };
 
-  // temporary method to display the results
+  // Method to display the results
   displayResults() {
     let name = [];
 
@@ -89,7 +89,21 @@ class Results extends Component {
     }
 
     for (let i = 0; i < this.state.desiredPlaces.length; i++) {
-      name.push(<p>{this.state.desiredPlaces[i].name}</p>);
+      name.push(
+        <div>
+          <ResultContainer
+            name={this.state.desiredPlaces[i].name}
+            info={{
+              origin_geo: this.props.info.geolocation,
+              destination_geo: [
+                this.state.desiredPlaces[i].coord.Lat,
+                this.state.desiredPlaces[i].coord.Lon
+              ]
+            }}
+          />
+          <br />
+        </div>
+      );
     }
     return name;
   }
@@ -101,15 +115,9 @@ class Results extends Component {
       padding.push(<br />);
     }
     console.log(this.state.desiredPlaces);
-      console.log("Results" + this.props.info.geolocation)
+    console.log("Results" + this.props.info.geolocation);
     return (
-      
       <div>
-        <ResultContainer 
-        info={{
-          origin_geo : this.props.info.geolocation,
-          destination_geo : [46.227638, 2.213749]
-        }}/>
         <h1>
           Distance: {this.props.info.range} Kilometres | Preferred Weather:{" "}
           {this.props.info.preferredWeather}{" "}
