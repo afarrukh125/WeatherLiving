@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./Results.css";
 
+/**
+ * This will hold each individual result.
+ * There still needs to be CSS formatting done for this.
+ */
 class ResultContainer extends Component {
   state = {
     skyscannerURL: null
