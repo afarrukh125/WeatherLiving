@@ -36,7 +36,21 @@ class Weather extends Component {
     this.props.updatePhase(1);
   };
 
-  render(props) {
+  /**
+   * This renders the components that display the weather.
+   * These are each of the components described in coursework 1:
+   * The main weather icon
+   * The weather description itself
+   * The city the user is in (using IP API from above)
+   * The temperature of the local area
+   * The dropdown to select preference for weather
+   * The slider to select the desired range
+   * The button to search (only available upon selecting preference from dropdown)
+   *
+   * The icon, the description and the temperature depend upon the weather API in the App.js class
+   *
+   */
+  render() {
     let info = this.props.info;
     return (
       <div className="Weather-info">

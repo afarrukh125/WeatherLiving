@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import ResultContainer from "./ResultContainer";
 import config from "../../config";
+import "./Results.css";
 
 /**
  * This is the page on which results will be shown based on the preferences
@@ -82,16 +83,17 @@ class Results extends Component {
   displayResults() {
     let name = [];
 
-    if (this.state.desiredPlaces.length > 0) {
-      name.push(<h3>Places that have the desired weather: </h3>);
-    } else {
-      name.push(<h3>There were no results matching this query.</h3>);
+    if (this.state.desiredPlaces.length == 0) {
+      name.push(
+        <h3 id="noResults">There were no results matching this query.</h3>
+      );
     }
 
     for (let i = 0; i < this.state.desiredPlaces.length; i++) {
       name.push(
         <div>
           <ResultContainer
+            className="resContainer"
             name={this.state.desiredPlaces[i].name}
             info={{
               origin_geo: this.props.info.geolocation,
@@ -108,9 +110,18 @@ class Results extends Component {
     return name;
   }
 
+  /**
+   * This method renders this component and the list of results from earlier
+   * The components in this part of the code include the divs that display the user input,
+   * each individual result (from the list above), and the button to allow user to go back
+   *
+   */
   render() {
     let padding = [];
     const VALUE = 30;
+    // We had conflicting CSS when either too little or too many results are shown
+    // For this reason, we had to use <br/> to extend the background
+    // The below loop does this based on the number of places that are to be shown
     for (let i = 0; i < VALUE - this.state.desiredPlaces.length; i++) {
       padding.push(<br />);
     }
@@ -118,10 +129,15 @@ class Results extends Component {
     console.log("Results" + this.props.info.geolocation);
     return (
       <div>
-        <h1>
-          Distance: {this.props.info.range} Kilometres | Preferred Weather:{" "}
-          {this.props.info.preferredWeather}{" "}
-        </h1>{" "}
+        <div className="inputDisplay">
+          <h1 id="prefWeather">
+            <b>{this.props.info.preferredWeather}</b>
+          </h1>
+          <h2>
+            <b>WITHIN </b>
+            {this.props.info.range} MILES{" "}
+          </h2>{" "}
+        </div>
         {this.displayResults()}
         <Button variant="secondary" onClick={this.handleBack}>
           Back

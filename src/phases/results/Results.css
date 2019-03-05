@@ -2,3 +2,15 @@
   border: 1px solid black;
   width: 80%;
 }
+
+.inputDisplay {
+  color: white;
+}
+
+#noResults {
+  color: white;
+}
+
+#prefWeather {
+  font-size: 72;
+}
