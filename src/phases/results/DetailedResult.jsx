@@ -25,6 +25,7 @@ class DetailedResult extends Component {
     const weatherData = await weatherDataResponse.json();
     const countryCode = weatherData.sys.country;
 
+    console.log(weatherData);
     this.setState({
       name: weatherData.name,
       temp: weatherData.main.temp,
@@ -55,14 +56,38 @@ class DetailedResult extends Component {
     const forecastResponse = await fetch(forecastUrl);
     const forecastData = await forecastResponse.json();
     let forecastList = forecastData.list;
+    console.log(forecastList);
+
+    /**
+     * This is the algorithm to decide the forecast for remaining week
+     * It assumes that we are starting at 0:00 so it is not completely correct
+     * It gives the rough minimum maximum values for each day
+     */
 
     let days = this.getNextFewDays(moment().day());
+    // moment is an npm package
+    // moment.day() gives the current day of the week as a number
+    // e.g. monday = 1, tuesday = 2... sunday = 7
     let arr = [];
     let k = 0; // Keeping track of day
-    arr.push(["Today", this.state.min_temp, this.state.max_temp]);
+
+    /**
+     * This is the algorithm to decide the forecast for remaining week
+     * It assumes that we are starting at 0:00 so it is not completely correct
+     * It gives the rough minimum maximum values for each day
+     */
+    arr.push([
+      "Today",
+      this.state.min_temp,
+      this.state.max_temp,
+      weatherData.weather[0].main
+    ]);
     for (let i = 0; i < 40; i = i + 8) {
       let min = forecastList[i].main.temp_min;
       let max = forecastList[i].main.temp_max;
+
+      let weatherType = forecastList[i].weather[0].main;
+      // Just set the type to be whatever the first one is for that day (not accurate)
 
       for (let j = i + 1; j < i + 8; j++) {
         if (forecastList[j].main.temp_min < min) {
@@ -72,7 +97,7 @@ class DetailedResult extends Component {
           max = forecastList[j].main.temp_max;
         }
       }
-      arr.push([days[k], min, max]);
+      arr.push([days[k], min, max, weatherType]);
       k += 1;
     }
     this.setState({ forecast: arr });
@@ -115,15 +140,28 @@ class DetailedResult extends Component {
     );
   }
 
+  /**
+   * Callback function to go back to main results display
+   * This is passed to whichever results object is created.
+   */
   handleBack = () => {
     this.props.handleBack();
   };
 
+  /**
+   * Get the day represented by the number in short form
+   * So Monday = 1 in dow format (assuming number given as such),
+   * so this will return 0th element, Mon
+   */
   getDay(num) {
     const days = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"];
     return days[num - 1];
   }
 
+  /**
+   * Gives the next few days as an array as their shortened day name
+   * Takes in the day of week as an integer, so Monday = 1, Sunday = 7
+   */
   getNextFewDays(dow) {
     let arr = [];
     for (let i = 0; i < 5; i++) {
@@ -139,15 +177,6 @@ class DetailedResult extends Component {
     }
     return objects;
   };
-
-  /**
-   * This is the algorithm to decide the forecast for remaining week
-   * It assumes that we are starting at 0:00 so it is not completely correct
-   * It gives the rough minimum maximum values for each day
-   * The forecast attribute in this component will have
-   * 10 values. When considered in pairs these will give min and max values for
-   * currentDay to currentDay + 5. There are 5 pairs of minmax, one for each day.
-   */
 }
 
 export default DetailedResult;
