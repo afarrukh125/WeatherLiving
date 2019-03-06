@@ -56,7 +56,6 @@ class DetailedResult extends Component {
     const forecastResponse = await fetch(forecastUrl);
     const forecastData = await forecastResponse.json();
     let forecastList = forecastData.list;
-    console.log(forecastList);
 
     /**
      * This is the algorithm to decide the forecast for remaining week
@@ -76,12 +75,17 @@ class DetailedResult extends Component {
      * It assumes that we are starting at 0:00 so it is not completely correct
      * It gives the rough minimum maximum values for each day
      */
+
+    // We need to push todays weather and then deal with upcoming days
+    // We can use the first weather API call (for individual result) to get
+    // the weather type
     arr.push([
       "Today",
       this.state.min_temp,
       this.state.max_temp,
       weatherData.weather[0].main
     ]);
+
     for (let i = 0; i < 40; i = i + 8) {
       let min = forecastList[i].main.temp_min;
       let max = forecastList[i].main.temp_max;
@@ -123,7 +127,11 @@ class DetailedResult extends Component {
         <br />
         <div id="tempDisplayInd">{Math.round(this.state.temp)}°</div>
         <br />
-        <div className="resultBlock">{this.getForecast()}</div>
+        <div className="resultBlock">
+          {this.getForecast()}
+          <br />
+          <p>Take me to {this.state.name}!</p>
+        </div>
 
         <br />
         <br />
