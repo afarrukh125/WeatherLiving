@@ -33,8 +33,14 @@
   src: url("../../fonts/BebasNeue-Bold.ttf") format("truetype"),
     url("../../fonts/BebasNeue-Book.ttf") format("truetye"),
     url("../../fonts/BebasNeue-Light.ttf") format("truetype"),
-    url("../../fonts/BebasNeue-Regular.ttf") format("truetype"),
-    url("../../fonts/BebasNeue-Thin.ttf") format("truetype");
+    url("../../fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bebas_regular";
+  src: url("../../fonts/BebasNeue-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -45,12 +51,14 @@
 }
 
 .weatherInfo {
+  font-family: "bebas_regular";
   float: right;
   width: 40%;
 }
 
 .minmax {
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 100;
   display: inline-block;
 }
 
@@ -59,6 +67,8 @@
 }
 
 .tempDisplay {
+  font-size: 42px;
   position: relative;
   float: right;
+  font-weight: 500;
 }

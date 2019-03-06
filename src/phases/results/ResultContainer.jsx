@@ -50,13 +50,15 @@ class ResultContainer extends Component {
             <h4 id="locationName">{this.props.name}</h4>
           </div>
           <div className="weatherInfo">
-            <h2 className="tempDisplay">{Math.round(this.props.temp)}°</h2>
+            <h2 className="tempDisplay">
+              {Math.round(this.props.temp)}°{"\n"}{" "}
+            </h2>
             <div className="minmax">
               <img
                 className="weatherIcon"
                 src={renderIcon(this.props.weatherType)}
                 alt="weather icon"
-              />
+              />{" "}
               {this.props.weatherType} {this.props.tempRange.min}°/
               {this.props.tempRange.max}°
             </div>
