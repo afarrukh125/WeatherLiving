@@ -21,17 +21,44 @@
   text-decoration: none;
 }
 
+#locationName {
+  font-family: "bebas_neuebold";
+  font-weight: 500px;
+  font-size: 32px;
+  float: left;
+}
+
+@font-face {
+  font-family: "bebas_neuebold";
+  src: url("../../fonts/BebasNeue-Bold.ttf") format("truetype"),
+    url("../../fonts/BebasNeue-Book.ttf") format("truetye"),
+    url("../../fonts/BebasNeue-Light.ttf") format("truetype"),
+    url("../../fonts/BebasNeue-Regular.ttf") format("truetype"),
+    url("../../fonts/BebasNeue-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .locationInfo {
   float: left;
+  width: 60%;
+}
+
+.weatherInfo {
+  float: right;
+  width: 40%;
+}
+
+.minmax {
   font-weight: bold;
-  font-size: 21px;
+  display: inline-block;
 }
 
 .weatherIcon {
-  width: 50px;
-  float: right;
+  width: 20px;
 }
 
 .tempDisplay {
+  position: relative;
   float: right;
 }

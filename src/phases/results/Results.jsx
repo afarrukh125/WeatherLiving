@@ -100,6 +100,10 @@ class Results extends Component {
             className="resContainer"
             weatherType={this.state.desiredPlaces[i].weather[0].main}
             name={this.state.desiredPlaces[i].name}
+            tempRange={{
+              min: this.state.desiredPlaces[i].main.temp_min,
+              max: this.state.desiredPlaces[i].main.temp_max
+            }}
             temp={this.state.desiredPlaces[i].main.temp}
             info={{
               origin_geo: this.props.info.geolocation,

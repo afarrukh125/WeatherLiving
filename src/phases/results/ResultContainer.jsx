@@ -46,16 +46,20 @@ class ResultContainer extends Component {
     return (
       <div className="resultBlock" onClick={this.handleClick}>
         <a className="resultLink" href={this.state.skyscannerURL}>
-          <div>
-            <h4 className="locationInfo">{this.props.name}</h4>
+          <div className="locationInfo">
+            <h4 id="locationName">{this.props.name}</h4>
           </div>
-          <div>
-            <img
-              className="weatherIcon"
-              src={renderIcon(this.props.weatherType)}
-              alt="weather icon"
-            />
+          <div className="weatherInfo">
             <h2 className="tempDisplay">{Math.round(this.props.temp)}°</h2>
+            <div className="minmax">
+              <img
+                className="weatherIcon"
+                src={renderIcon(this.props.weatherType)}
+                alt="weather icon"
+              />
+              {this.props.weatherType} {this.props.tempRange.min}°/
+              {this.props.tempRange.max}°
+            </div>
           </div>
         </a>
       </div>
