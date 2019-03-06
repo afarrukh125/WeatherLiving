@@ -7,6 +7,7 @@ import {
   setBackground,
   parseWeatherFromPreference
 } from "../../utils/AssetsManager";
+import DetailedResult from "./DetailedResult";
 
 /**
  * This is the page on which results will be shown based on the preferences
@@ -14,7 +15,9 @@ import {
  */
 class Results extends Component {
   state = {
-    desiredPlaces: []
+    desiredPlaces: [],
+    detailedResult: false,
+    detailedResultIndex: null
   };
 
   /**
@@ -100,6 +103,8 @@ class Results extends Component {
       name.push(
         <div>
           <ResultContainer
+            resultIndex={i}
+            showDetailed={this.showDetailed}
             className="resContainer"
             weatherType={this.state.desiredPlaces[i].weather[0].main}
             name={this.state.desiredPlaces[i].name}
@@ -127,6 +132,19 @@ class Results extends Component {
    *
    */
   render() {
+    /**
+     * If we are choosing to show a detailed result, return the
+     * detailed result object.
+     */
+    if (this.state.detailedResult) {
+      return (
+        <DetailedResult
+          weather={this.props.info.preferredWeather}
+          handleBack={this.backToResults}
+          info={this.state.desiredPlaces[this.state.detailedResultIndex]}
+        />
+      );
+    }
     const weather = parseWeatherFromPreference(
       this.props.info.preferredWeather
     );
@@ -179,6 +197,14 @@ class Results extends Component {
    */
   handleBack = () => {
     this.props.updatePhase(0);
+  };
+
+  showDetailed = i => {
+    this.setState({ detailedResult: true, detailedResultIndex: i });
+  };
+
+  backToResults = () => {
+    this.setState({ detailedResult: false });
   };
 }
 

@@ -75,7 +75,7 @@ class ResultContainer extends Component {
   render() {
     return (
       <div className="resultBlock" onClick={this.handleClick}>
-        <a className="resultLink" href={this.state.skyscannerURL}>
+        <div className="resultLink">
           <div className="locationInfo">
             <span id="locationName">{this.props.name}</span>
             <br /> <br />
@@ -95,13 +95,13 @@ class ResultContainer extends Component {
               {Math.round(this.props.tempRange.max)}°
             </div>
           </div>
-        </a>
+        </div>
       </div>
     );
   }
 
   handleClick = () => {
-    console.log("Clicked " + this.props.name);
+    this.props.showDetailed(this.props.resultIndex);
   };
 }
 
