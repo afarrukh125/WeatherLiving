@@ -97,7 +97,7 @@ class Weather extends Component {
             <img
               src={backgroundItems[1]}
               alt="weather background object"
-              className="App-bg-object"
+              className="App-bg-object-weather"
             />
           </div>
         </div>

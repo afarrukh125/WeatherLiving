@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./Results.css";
+import "./ResultContainer.css";
+import { renderIcon } from "../../utils/AssetsManager";
 
 /**
  * This will hold each individual result.
@@ -36,10 +37,25 @@ class ResultContainer extends Component {
     });
   }
 
+  /**
+   * Displays the individual result.
+   * This includes the name of the place, the relevant weather icon
+   * and the temperature mainly
+   */
   render() {
+    console.log(this.props.weatherType);
     return (
-      <div>
-        <a href={this.state.skyscannerURL}>Take me to {this.props.name}</a>
+      <div className="resultBlock">
+        <a className="resultLink" href={this.state.skyscannerURL}>
+          <h4 className="locationInfo">{this.props.name}</h4>
+          <img
+            className="weatherIcon"
+            src={renderIcon(this.props.weatherType)}
+            alt="weather icon"
+          />
+          <h2 className="tempDisplay">{Math.round(this.props.temp)}</h2>
+        </a>
+        <br />
       </div>
     );
   }

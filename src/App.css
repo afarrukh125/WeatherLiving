@@ -8,11 +8,10 @@
 }
 
 .WeatherComponent {
-  position: fixed;
+  position: auto;
   text-align: center;
-  height: 100vh;
+  height: 115vh;
   width: 100vw;
-  z-index: -1;
   background-attachment: fixed;
 }
 
@@ -33,6 +32,13 @@
   left: 0;
   width: 100vw;
   z-index: -1;
+}
+
+.App-bg-object-weather {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
 
 .Weather-info {
