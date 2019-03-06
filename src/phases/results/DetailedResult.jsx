@@ -13,6 +13,14 @@ import ForecastObject from "../../components/ForecastObject";
 class DetailedResult extends Component {
   state = { forecast: [] };
 
+  /**
+   * Many API calls are made in this class
+   * We need to know the destination coordinates
+   * We then parse this information into an IATA API
+   * to get airline information
+   *
+   * We then create a skyscanner link based on this.
+   */
   async componentDidMount() {
     const originLat = this.props.origin_geo[0];
     const originLon = this.props.origin_geo[1];
@@ -49,7 +57,6 @@ class DetailedResult extends Component {
     const weatherData = await weatherDataResponse.json();
     const countryCode = weatherData.sys.country;
 
-    console.log(weatherData);
     this.setState({
       name: weatherData.name,
       temp: weatherData.main.temp,
@@ -131,6 +138,11 @@ class DetailedResult extends Component {
     this.setState({ forecast: arr });
   }
 
+  /**
+   * Renders the element
+   * This includes the icon, the weather name, the location, and the temperature
+   * As well as the forecasts.
+   */
   render() {
     const parsedPreference = parseWeatherFromPreference(this.props.weather);
     const backgroundItems = setBackground(parsedPreference);
