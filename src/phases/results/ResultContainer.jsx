@@ -52,9 +52,8 @@ class ResultContainer extends Component {
             src={renderIcon(this.props.weatherType)}
             alt="weather icon"
           />
-          <h2 className="tempDisplay">{Math.round(this.props.temp)}</h2>
+          <h2 className="tempDisplay">{Math.round(this.props.temp)}°</h2>
         </a>
-        <br />
       </div>
     );
   }
