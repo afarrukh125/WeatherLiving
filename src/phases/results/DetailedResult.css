@@ -1,7 +1,7 @@
 .detailedResult {
-  position: fixed;
+  position: relative;
   text-align: center;
-  height: 100vh;
+  height: 115vh;
   width: 100vw;
   background-attachment: fixed;
   color: white;
@@ -26,6 +26,13 @@
   color: white;
   text-decoration: none;
   font-size: 24px;
+}
+
+.App-bg-object-detailed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
 
 @font-face {

@@ -168,7 +168,7 @@ class DetailedResult extends Component {
         <img
           src={backgroundItems[1]}
           alt="weather background object"
-          className="App-bg-object-weather"
+          className="App-bg-object-detailed"
         />
       </div>
     );
