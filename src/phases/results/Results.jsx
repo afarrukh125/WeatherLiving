@@ -18,9 +18,9 @@ class Results extends Component {
   };
 
   /**
-   * fetch data from api
-   * all the places within a certain range
-   * then removes the places that do not have the desired weather by calling the 'findplace' method
+   * Fetch data from api
+   * All the places within a certain range
+   * Then removes the places that do not have the desired weather by calling the 'findplace' method
    */
   async componentDidMount() {
     const coordinates = this.props.info.rangeCoordiantes;
@@ -74,7 +74,6 @@ class Results extends Component {
     const list = cities.list;
 
     for (let i = 0; i < list.length; i++) {
-      console.log(list[i].weather[0].main);
       if (list[i].weather[0].main === weather) {
         this.setState({
           desiredPlaces: [...this.state.desiredPlaces, list[i]]
@@ -94,11 +93,14 @@ class Results extends Component {
     }
 
     for (let i = 0; i < this.state.desiredPlaces.length; i++) {
+      // console.log(this.state.desiredPlaces[i]);
       name.push(
         <div>
           <ResultContainer
             className="resContainer"
+            weatherType={this.state.desiredPlaces[i].weather[0].main}
             name={this.state.desiredPlaces[i].name}
+            temp={this.state.desiredPlaces[i].main.temp}
             info={{
               origin_geo: this.props.info.geolocation,
               destination_geo: [
@@ -125,7 +127,6 @@ class Results extends Component {
     const weather = parseWeatherFromPreference(
       this.props.info.preferredWeather
     );
-    console.log(this.props.info.preferredWeather);
     const backgroundItems = setBackground(weather);
     // We must decide the style for the results page dynamically
     // This is why we could not have used an external style sheet

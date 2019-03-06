@@ -13,6 +13,16 @@
   text-decoration: none;
 }
 
-a {
-  display: block;
+.locationInfo {
+  float: left;
+  font-weight: bold;
+}
+
+.weatherIcon {
+  width: 50px;
+  float: right;
+}
+
+.tempDisplay {
+  float: right;
 }
