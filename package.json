@@ -7,6 +7,7 @@
     "bootstrap": "^4.3.1",
     "countries-api": "^2.0.2",
     "country-iso": "^2.0.5",
+    "moment": "^2.24.0",
     "nearby-big-cities": "^1.0.0",
     "nearby-cities": "^1.1.0",
     "rc-slider": "^8.6.5",
