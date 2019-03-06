@@ -63,7 +63,7 @@
 }
 
 .weatherIcon {
-  display: inline-block;
+  width: 25px;
 }
 
 .tempDisplay {

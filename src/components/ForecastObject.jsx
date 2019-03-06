@@ -11,6 +11,7 @@ class ForecastObject extends Component {
         <div id="tempRanges">
           {Math.round(this.props.data[2])}°|{Math.round(this.props.data[1])}°
         </div>
+        <br />
         <img
           className="weatherIcon"
           src={renderIcon(this.props.data[3])}
