@@ -1,0 +1,33 @@
+.detailedResult {
+  position: fixed;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-attachment: fixed;
+  color: white;
+}
+
+#weatherNameInd {
+  font-size: 36px;
+  font-weight: 100;
+}
+
+#locationNameInd {
+  font-size: 24px;
+  display: inline-block;
+}
+
+#tempDisplayInd {
+  font-size: 50px;
+  font-family: "bebas_neuebold";
+}
+
+@font-face {
+  font-family: "bebas_neuebold";
+  src: url("../../fonts/BebasNeue-Bold.ttf") format("truetype"),
+    url("../../fonts/BebasNeue-Book.ttf") format("truetye"),
+    url("../../fonts/BebasNeue-Light.ttf") format("truetype"),
+    url("../../fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
