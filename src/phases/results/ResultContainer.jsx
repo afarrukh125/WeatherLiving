@@ -43,7 +43,6 @@ class ResultContainer extends Component {
    * and the temperature mainly
    */
   render() {
-    console.log(this.props.weatherType);
     return (
       <div className="resultBlock">
         <a className="resultLink" href={this.state.skyscannerURL}>
