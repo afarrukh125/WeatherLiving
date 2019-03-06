@@ -77,7 +77,7 @@ class ResultContainer extends Component {
       <div className="resultBlock" onClick={this.handleClick}>
         <a className="resultLink" href={this.state.skyscannerURL}>
           <div className="locationInfo">
-            <h4 id="locationName">{this.props.name}</h4>
+            <span id="locationName">{this.props.name}</span>
             <br /> <br />
             <h3 id="countryName">{this.state.countryName}</h3>
           </div>
