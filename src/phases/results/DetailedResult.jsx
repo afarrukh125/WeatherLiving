@@ -14,6 +14,30 @@ class DetailedResult extends Component {
   state = { forecast: [] };
 
   async componentDidMount() {
+    const originLat = this.props.origin_geo[0];
+    const originLon = this.props.origin_geo[1];
+    const destinationLat = this.props.info.coord.Lat;
+    const destinationLon = this.props.info.coord.Lon;
+
+    const originIataUrl =
+      "http://iatageo.com/getCode/" + originLat + "/" + originLon;
+    const destinationIataUrl =
+      "http://iatageo.com/getCode/" + destinationLat + "/" + destinationLon;
+
+    const originIataResponse = await fetch(originIataUrl);
+    const originIataData = await originIataResponse.json();
+
+    const destinationIataResponse = await fetch(destinationIataUrl);
+    const destionationData = await destinationIataResponse.json();
+
+    this.setState({
+      skyscannerURL:
+        "https://www.skyscanner.net/transport/flights/" +
+        originIataData.IATA +
+        "/" +
+        destionationData.IATA
+    });
+
     const weatherURL =
       "http://api.openweathermap.org/data/2.5/weather?lat=" +
       this.props.info.coord.Lat +
@@ -130,7 +154,9 @@ class DetailedResult extends Component {
         <div className="resultBlock">
           {this.getForecast()}
           <br />
-          <p>Take me to {this.state.name}!</p>
+          <a id="resultLink" href={this.state.skyscannerURL}>
+            Take me to {this.state.name}!
+          </a>
         </div>
 
         <br />

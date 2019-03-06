@@ -142,6 +142,7 @@ class Results extends Component {
           weather={this.props.info.preferredWeather}
           handleBack={this.backToResults}
           info={this.state.desiredPlaces[this.state.detailedResultIndex]}
+          origin_geo={this.props.info.geolocation}
         />
       );
     }
