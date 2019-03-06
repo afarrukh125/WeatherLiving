@@ -136,7 +136,7 @@ class DetailedResult extends Component {
         <br />
         <br />
         <Button variant="secondary" onClick={this.handleBack}>
-          Go back
+          Back
         </Button>
 
         <img
