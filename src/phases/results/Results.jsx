@@ -146,13 +146,11 @@ class Results extends Component {
       >
         <div>
           <div className="inputDisplay">
-            <h1 id="prefWeather">
-              <b>{this.props.info.preferredWeather}</b>
-            </h1>
-            <h2>
+            <b id="prefWeather">{this.props.info.preferredWeather}</b>
+            <div className="rangeDisplay">
               <b>WITHIN </b>
-              {this.props.info.range} KILOMETERS{" "}
-            </h2>{" "}
+              <div id="prefRange">{this.props.info.range} KILOMETERS </div>
+            </div>
           </div>
           <br />
           {this.displayResults()}
