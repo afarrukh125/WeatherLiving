@@ -93,6 +93,9 @@ class Results extends Component {
     }
 
     for (let i = 0; i < this.state.desiredPlaces.length; i++) {
+      const lat = this.state.desiredPlaces[i].coord.Lat;
+      const lon = this.state.desiredPlaces[i].coord.Lon;
+
       // console.log(this.state.desiredPlaces[i]);
       name.push(
         <div>
@@ -107,10 +110,7 @@ class Results extends Component {
             temp={this.state.desiredPlaces[i].main.temp}
             info={{
               origin_geo: this.props.info.geolocation,
-              destination_geo: [
-                this.state.desiredPlaces[i].coord.Lat,
-                this.state.desiredPlaces[i].coord.Lon
-              ]
+              destination_geo: [lat, lon]
             }}
           />
           <br />
@@ -136,7 +136,7 @@ class Results extends Component {
     // The idea is that if there are a few results then we set the results page to be fixed height
     // If there are many results then we scale the height of the page to automatically align with the number of results
     // The constant "decider" is the value that the ternary operator uses to decide which className to use
-    const decider = 10;
+    const decider = 3;
     let resultClass =
       this.state.desiredPlaces.length > decider
         ? "many-results"
