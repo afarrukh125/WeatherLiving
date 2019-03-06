@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./ResultContainer.css";
 import { renderIcon } from "../../utils/AssetsManager";
+import config from "../../config";
 
 /**
  * This will hold each individual result.
- * There still needs to be CSS formatting done for this.
+ * The async operation to get the country from the lat/lon takes a while
+ * We were limited by the capabilities of the open weather map api.
+ * It does not show country for each result so we had to use another API.
  */
 class ResultContainer extends Component {
   state = {
@@ -35,6 +38,33 @@ class ResultContainer extends Component {
         "/" +
         destionationData.IATA
     });
+
+    const countryUrl =
+      "https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=" +
+      destinationLat +
+      "%2C" +
+      destinationLon +
+      "%2C250&mode=retrieveAddresses&maxresults=1&gen=9&app_id=" +
+      config.countryAppId +
+      "&app_code=" +
+      config.countryAppCode;
+
+    const countryResponse = await fetch(countryUrl);
+    const countryData = await countryResponse.json();
+    const countryCode =
+      countryData.Response.View[0].Result[0].Location.Address.Country;
+
+    const countryCodeUrl =
+      "https://restcountries.eu/rest/v2/alpha/" + countryCode;
+    const countryCodeResponse = await fetch(countryCodeUrl);
+    const countryCodeData = await countryCodeResponse.json();
+
+    // The API returns the full name for GBR. We want to truncate this
+    // (API returns "United Kingdom of Great Britain and Northern Ireland")
+    this.setState({
+      countryName:
+        countryCode === "GBR" ? "United Kingdom" : countryCodeData.name
+    });
   }
 
   /**
@@ -48,6 +78,8 @@ class ResultContainer extends Component {
         <a className="resultLink" href={this.state.skyscannerURL}>
           <div className="locationInfo">
             <h4 id="locationName">{this.props.name}</h4>
+            <br /> <br />
+            <h3 id="countryName">{this.state.countryName}</h3>
           </div>
           <div className="weatherInfo">
             <h2 className="tempDisplay">
@@ -59,8 +91,8 @@ class ResultContainer extends Component {
                 src={renderIcon(this.props.weatherType)}
                 alt="weather icon"
               />{" "}
-              {this.props.weatherType} {this.props.tempRange.min}°/
-              {this.props.tempRange.max}°
+              {this.props.weatherType} {Math.round(this.props.tempRange.min)}°/
+              {Math.round(this.props.tempRange.max)}°
             </div>
           </div>
         </a>

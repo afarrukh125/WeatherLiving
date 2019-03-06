@@ -28,6 +28,11 @@
   float: left;
 }
 
+#countryName {
+  float: left;
+  font-size: 18px;
+}
+
 @font-face {
   font-family: "bebas_neuebold";
   src: url("../../fonts/BebasNeue-Bold.ttf") format("truetype"),
@@ -57,7 +62,7 @@
 }
 
 .minmax {
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 100;
   display: inline-block;
 }
