@@ -136,7 +136,7 @@ class Results extends Component {
     // The idea is that if there are a few results then we set the results page to be fixed height
     // If there are many results then we scale the height of the page to automatically align with the number of results
     // The constant "decider" is the value that the ternary operator uses to decide which className to use
-    const decider = 10;
+    const decider = 3;
     let resultClass =
       this.state.desiredPlaces.length > decider
         ? "many-results"
