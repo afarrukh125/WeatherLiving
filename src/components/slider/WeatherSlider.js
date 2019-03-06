@@ -25,10 +25,12 @@ class WeatherSlider extends Component {
     }
   };
 
-  render(prop) {
+  render() {
     return (
       <div align="center">
-        <h4 className="disttext">Distance</h4>
+        <div>
+          <h4 className="disttext">Distance</h4>
+        </div>
         <Slider
           id="slider"
           min={this.state.min}
@@ -36,6 +38,7 @@ class WeatherSlider extends Component {
           defaultValue={this.state.current}
           onChange={this.handleSliderUpdate}
         />
+        <p id="description">{this.state.current} Kilometers</p>
       </div>
     );
   }

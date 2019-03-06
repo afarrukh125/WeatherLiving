@@ -72,11 +72,9 @@ class Weather extends Component {
             <br />
             <span id="info-description"> {info.weather} </span>
             <br />
-            <br />
             <span id="info-city"> {info.city} </span>
             <br />
             <TemperatureDisplay info={{ temp: info.temp }} />
-            <br />
             <br />
             <LocationDropDown
               dataCallBack={this.handleDropdownSelected}
@@ -87,18 +85,17 @@ class Weather extends Component {
               className="Weather-slider"
               dataCallBack={this.handleSliderUpdate}
             />
-            <p className="description">{this.state.userRange} Kilometers</p>
             <SearchButton
               preferredWeather={this.state.preferredWeather}
               onUpdate={this.handleButtonClick}
             />
-          </div>
-          <div>
-            <img
-              src={backgroundItems[1]}
-              alt="weather background object"
-              className="App-bg-object-weather"
-            />
+            <div>
+              <img
+                src={backgroundItems[1]}
+                alt="weather background object"
+                className="App-bg-object-weather"
+              />
+            </div>
           </div>
         </div>
       </div>

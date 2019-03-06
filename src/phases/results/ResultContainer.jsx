@@ -44,19 +44,33 @@ class ResultContainer extends Component {
    */
   render() {
     return (
-      <div className="resultBlock">
+      <div className="resultBlock" onClick={this.handleClick}>
         <a className="resultLink" href={this.state.skyscannerURL}>
-          <h4 className="locationInfo">{this.props.name}</h4>
-          <img
-            className="weatherIcon"
-            src={renderIcon(this.props.weatherType)}
-            alt="weather icon"
-          />
-          <h2 className="tempDisplay">{Math.round(this.props.temp)}°</h2>
+          <div className="locationInfo">
+            <h4 id="locationName">{this.props.name}</h4>
+          </div>
+          <div className="weatherInfo">
+            <h2 className="tempDisplay">
+              {Math.round(this.props.temp)}°{"\n"}{" "}
+            </h2>
+            <div className="minmax">
+              <img
+                className="weatherIcon"
+                src={renderIcon(this.props.weatherType)}
+                alt="weather icon"
+              />{" "}
+              {this.props.weatherType} {this.props.tempRange.min}°/
+              {this.props.tempRange.max}°
+            </div>
+          </div>
         </a>
       </div>
     );
   }
+
+  handleClick = () => {
+    console.log("Clicked " + this.props.name);
+  };
 }
 
 export default ResultContainer;

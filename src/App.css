@@ -58,14 +58,27 @@
 }
 
 #info-description {
-  font-weight: 3;
+  font-weight: 400;
   font-size: 36px;
 }
 
 #info-city {
   font-size: 24px;
+  font-weight: 100;
 }
 
 #info-temp {
   font-size: 72px;
+  font-family: "bebas_neuebold";
+}
+
+@font-face {
+  font-family: "bebas_neuebold";
+  src: url("fonts/BebasNeue-Bold.ttf") format("truetype"),
+    url("fonts/BebasNeue-Book.ttf") format("truetye"),
+    url("fonts/BebasNeue-Light.ttf") format("truetype"),
+    url("fonts/BebasNeue-Regular.ttf") format("truetype"),
+    url("fonts/BebasNeue-Thin.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }

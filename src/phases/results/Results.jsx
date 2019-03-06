@@ -100,6 +100,10 @@ class Results extends Component {
             className="resContainer"
             weatherType={this.state.desiredPlaces[i].weather[0].main}
             name={this.state.desiredPlaces[i].name}
+            tempRange={{
+              min: this.state.desiredPlaces[i].main.temp_min,
+              max: this.state.desiredPlaces[i].main.temp_max
+            }}
             temp={this.state.desiredPlaces[i].main.temp}
             info={{
               origin_geo: this.props.info.geolocation,
@@ -146,13 +150,11 @@ class Results extends Component {
       >
         <div>
           <div className="inputDisplay">
-            <h1 id="prefWeather">
-              <b>{this.props.info.preferredWeather}</b>
-            </h1>
-            <h2>
+            <b id="prefWeather">{this.props.info.preferredWeather}</b>
+            <div className="rangeDisplay">
               <b>WITHIN </b>
-              {this.props.info.range} KILOMETERS{" "}
-            </h2>{" "}
+              <div id="prefRange">{this.props.info.range} KILOMETERS </div>
+            </div>
           </div>
           <br />
           {this.displayResults()}

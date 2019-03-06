@@ -33,6 +33,10 @@ class App extends Component {
     return val * (180 / Math.PI);
   };
 
+  /**
+   * We make use of the Haversine formula to calculate this
+   * https://en.wikipedia.org/wiki/Haversine_formula
+   */
   getRangeCoordinates = () => {
     //this is where the range will be calculated
     // api only deals with longitudinal and lataitudinal values.
