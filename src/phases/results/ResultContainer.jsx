@@ -43,7 +43,6 @@ class ResultContainer extends Component {
    * and the temperature mainly
    */
   render() {
-    console.log(this.props.weatherType);
     return (
       <div className="resultBlock">
         <a className="resultLink" href={this.state.skyscannerURL}>
@@ -53,9 +52,8 @@ class ResultContainer extends Component {
             src={renderIcon(this.props.weatherType)}
             alt="weather icon"
           />
-          <h2 className="tempDisplay">{Math.round(this.props.temp)}</h2>
+          <h2 className="tempDisplay">{Math.round(this.props.temp)}°</h2>
         </a>
-        <br />
       </div>
     );
   }

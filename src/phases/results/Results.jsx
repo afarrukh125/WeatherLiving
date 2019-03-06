@@ -110,7 +110,6 @@ class Results extends Component {
             }}
           />
           <br />
-          <br />
         </div>
       );
     }
@@ -152,7 +151,7 @@ class Results extends Component {
             </h1>
             <h2>
               <b>WITHIN </b>
-              {this.props.info.range} KILOMETRES{" "}
+              {this.props.info.range} KILOMETERS{" "}
             </h2>{" "}
           </div>
           <br />
