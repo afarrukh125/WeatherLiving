@@ -151,9 +151,10 @@ class Results extends Component {
             </h1>
             <h2>
               <b>WITHIN </b>
-              {this.props.info.range} MILES{" "}
+              {this.props.info.range} KILOMETRES{" "}
             </h2>{" "}
           </div>
+          <br />
           {this.displayResults()}
           <br />
           <Button variant="secondary" onClick={this.handleBack}>

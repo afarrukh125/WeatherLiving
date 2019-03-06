@@ -39,7 +39,9 @@ class ResultContainer extends Component {
   render() {
     return (
       <div className="resultBlock">
-        <a href={this.state.skyscannerURL}>Take me to {this.props.name}</a>
+        <a className="resultLink" href={this.state.skyscannerURL}>
+          {this.props.name}
+        </a>
         <br />
       </div>
     );
