@@ -162,7 +162,6 @@ class DetailedResult extends Component {
         </div>
         <br />
         <div id="tempDisplayInd">{Math.round(this.state.temp)}°</div>
-        <br />
         <div className="resultBlock">
           {this.getForecast()}
           <br />
@@ -176,7 +175,6 @@ class DetailedResult extends Component {
         <Button variant="secondary" onClick={this.handleBack}>
           Back
         </Button>
-
         <img
           src={backgroundItems[1]}
           alt="weather background object"
