@@ -5,6 +5,7 @@
   width: 100vw;
   background-attachment: fixed;
   color: white;
+  user-select: none;
 }
 
 #weatherNameInd {

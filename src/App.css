@@ -5,6 +5,7 @@
   width: 100vw;
   z-index: -1;
   background-attachment: fixed;
+  user-select: none;
 }
 
 .WeatherComponent {
@@ -13,6 +14,7 @@
   height: 115vh;
   width: 100vw;
   background-attachment: fixed;
+  user-select: none;
 }
 
 .App-header {
