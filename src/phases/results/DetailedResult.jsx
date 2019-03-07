@@ -9,6 +9,7 @@ import "./DetailedResult.css";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 import ForecastObject from "../../components/ForecastObject";
+import Icon from "../../resources/skyscanner_logo.svg"
 
 class DetailedResult extends Component {
   state = { forecast: [] };
@@ -151,6 +152,7 @@ class DetailedResult extends Component {
         className="detailedResult"
         style={{ backgroundImage: `url(${backgroundItems[0]})` }}
       >
+      <div className="foreGround">
         <img
           src={renderIcon(parsedPreference)}
           alt="weather icon"
@@ -165,8 +167,11 @@ class DetailedResult extends Component {
         <div className="resultBlock">
           {this.getForecast()}
           <br />
-          <a id="resultLink" href={this.state.skyscannerURL}>
-            Take me to {this.state.name}!
+          <a id="resultLink" href={this.state.skyscannerURL} target="_blank">
+          <img 
+            src={Icon} 
+            alt="logo" 
+            className="hyperlinkIcon"/> 
           </a>
         </div>
 
@@ -175,6 +180,7 @@ class DetailedResult extends Component {
         <Button variant="secondary" onClick={this.handleBack}>
           Back
         </Button>
+      </div>
         <img
           src={backgroundItems[1]}
           alt="weather background object"

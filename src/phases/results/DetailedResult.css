@@ -6,6 +6,7 @@
   background-attachment: fixed;
   color: white;
   user-select: none;
+  z-index: 1;
 }
 
 #weatherNameInd {
@@ -34,8 +35,17 @@
   bottom: 0;
   left: 0;
   width: 100vw;
+  z-index: -1;
 }
 
+.hyperlinkIcon{
+  width : 40%;
+  margin: 2.5px;
+}
+
+.foreGround{
+  z-index: 2;
+}
 @font-face {
   font-family: "bebas_neuebold";
   src: url("../../fonts/BebasNeue-Bold.ttf") format("truetype"),
