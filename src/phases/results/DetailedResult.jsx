@@ -13,6 +13,14 @@ import ForecastObject from "../../components/ForecastObject";
 class DetailedResult extends Component {
   state = { forecast: [] };
 
+  /**
+   * Many API calls are made in this class
+   * We need to know the destination coordinates
+   * We then parse this information into an IATA API
+   * to get airline information
+   *
+   * We then create a skyscanner link based on this.
+   */
   async componentDidMount() {
     const originLat = this.props.origin_geo[0];
     const originLon = this.props.origin_geo[1];
@@ -49,7 +57,6 @@ class DetailedResult extends Component {
     const weatherData = await weatherDataResponse.json();
     const countryCode = weatherData.sys.country;
 
-    console.log(weatherData);
     this.setState({
       name: weatherData.name,
       temp: weatherData.main.temp,
@@ -110,7 +117,7 @@ class DetailedResult extends Component {
       weatherData.weather[0].main
     ]);
 
-    for (let i = 0; i < 40; i = i + 8) {
+    for (let i = 0; i < 32; i = i + 8) {
       let min = forecastList[i].main.temp_min;
       let max = forecastList[i].main.temp_max;
 
@@ -131,6 +138,11 @@ class DetailedResult extends Component {
     this.setState({ forecast: arr });
   }
 
+  /**
+   * Renders the element
+   * This includes the icon, the weather name, the location, and the temperature
+   * As well as the forecasts.
+   */
   render() {
     const parsedPreference = parseWeatherFromPreference(this.props.weather);
     const backgroundItems = setBackground(parsedPreference);
@@ -150,7 +162,6 @@ class DetailedResult extends Component {
         </div>
         <br />
         <div id="tempDisplayInd">{Math.round(this.state.temp)}°</div>
-        <br />
         <div className="resultBlock">
           {this.getForecast()}
           <br />
@@ -164,11 +175,10 @@ class DetailedResult extends Component {
         <Button variant="secondary" onClick={this.handleBack}>
           Back
         </Button>
-
         <img
           src={backgroundItems[1]}
           alt="weather background object"
-          className="App-bg-object-weather"
+          className="App-bg-object-detailed"
         />
       </div>
     );
@@ -198,7 +208,7 @@ class DetailedResult extends Component {
    */
   getNextFewDays(dow) {
     let arr = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       arr.push(this.getDay(((dow + i) % 7) + 1));
     }
     return arr;

@@ -5,6 +5,7 @@
   background-color: rgba(0, 0, 0, 0.15);
   color: white;
   padding: 10px;
+  user-select: none;
 }
 
 .resultLink {

@@ -1,6 +1,7 @@
 .resContainer {
   border: 1px solid black;
   width: 80%;
+  user-select: none;
 }
 
 .inputDisplay {
@@ -14,11 +15,13 @@
 #prefWeather {
   font-family: "bebas_neuebold";
   font-size: 72px;
+  user-select: none;
 }
 
 #prefRange {
   display: inline-block;
   font-weight: 100;
+  user-select: none;
 }
 
 .rangeDisplay {
