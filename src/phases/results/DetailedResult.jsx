@@ -117,7 +117,7 @@ class DetailedResult extends Component {
       weatherData.weather[0].main
     ]);
 
-    for (let i = 0; i < 40; i = i + 8) {
+    for (let i = 0; i < 32; i = i + 8) {
       let min = forecastList[i].main.temp_min;
       let max = forecastList[i].main.temp_max;
 
@@ -210,7 +210,7 @@ class DetailedResult extends Component {
    */
   getNextFewDays(dow) {
     let arr = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       arr.push(this.getDay(((dow + i) % 7) + 1));
     }
     return arr;
