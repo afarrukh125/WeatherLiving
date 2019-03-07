@@ -1,11 +1,17 @@
 import ClearBg from "../resources/weather-backgrounds/clear/clear-bg.svg";
 import ClearBgObject from "../resources/weather-backgrounds/clear/clear-right-obj.svg";
+import CloudBg from "../resources/weather-backgrounds/cloud/cloud-bg.svg";
+import CloudBgObject from "../resources/weather-backgrounds/cloud/cloud-bg-obj.svg";
 import SnowBg from "../resources/weather-backgrounds/snow/snow-bg.svg";
 import SnowBgObject from "../resources/weather-backgrounds/snow/snow-bg-obj.svg";
 import RainBg from "../resources/weather-backgrounds/rain/rain-bg.svg";
 import RainBgObject from "../resources/weather-backgrounds/rain/rain-bg-obj.svg";
 import ThunderstormBg from "../resources/weather-backgrounds/thunderstorm/thunderstorm-bg.svg";
 import ThunderstormBgObject from "../resources/weather-backgrounds/thunderstorm/thunderstorm-bg-obj.svg";
+import MistBg from "../resources/weather-backgrounds/mist/mist-bg.svg";
+import MistBgObject from "../resources/weather-backgrounds/mist/mist-bg-obj.svg";
+
+
 import Clear from "../resources/weather-icons/clear.svg";
 import Cloud from "../resources/weather-icons/cloud.svg";
 import Rain from "../resources/weather-icons/rain.svg";
@@ -13,6 +19,7 @@ import Drizzle from "../resources/weather-icons/drizzle.svg";
 import Snow from "../resources/weather-icons/snow.svg";
 import Thunder from "../resources/weather-icons/thunder.svg";
 import Atmosphere from "../resources/weather-icons/atmosphere.svg";
+
 
 // returns a list of svg file depending on the weather.
 // index 0: the background
@@ -25,15 +32,15 @@ export function setBackground(weather) {
     case "Rain":
       return [RainBg, RainBgObject];
     case "Mist":
-      return [ClearBg, ClearBgObject]; // update
+      return [MistBg, MistBgObject]; 
     case "Drizzle":
-      return [ClearBg, ClearBgObject]; //update
+      return [RainBg, RainBgObject]; 
     case "Clouds":
-      return [ClearBg, ClearBgObject]; //update
+      return [CloudBg, CloudBgObject]; 
     case "Snow":
       return [SnowBg, SnowBgObject];
     case "Fog":
-      return [SnowBg, SnowBgObject]; // update
+      return [MistBg, MistBgObject]; 
     case "Thunderstorm":
       return [ThunderstormBg, ThunderstormBgObject];
     case "Atmosphere":
@@ -55,9 +62,9 @@ export function renderIcon(weather) {
     case "Clouds":
       return Cloud;
     case "Mist":
-      return Cloud; // Update
+      return Cloud; 
     case "Fog":
-      return Cloud; // Update
+      return Cloud; 
     case "Snow":
       return Snow;
     case "Thunderstorm":
@@ -94,7 +101,7 @@ export function parseWeatherFromPreference(preference) {
     case "Snowy":
       return "Snow";
     case "Misty":
-      return "Atmosphere";
+      return "Mist";
     case "Stormy":
       return "Thunderstorm";
     default:
