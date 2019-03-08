@@ -6,4 +6,8 @@ A simple weather application which shows the current weather. Users can enter if
 
 Clone this repository as per usual, using `git clone <repository link>`. After this open the directory in a command line. Use npm install to get all dependencies. This will take some time.
 
-After that feel free to edit this and commit changes as required. Use the guide I have provided in order to figure out how to contribute in the best way. 
+## Additional notes
+
+Please note that results take some time to load after searching for locations. Please allow a second or two for results to show up, possibly longer especially if the range was set very high. After a while, however, you can safely assume that there were no results found.
+
+Any inaccuracies in the temperature and weather name can be put down to the weather API.

@@ -1,0 +1,23 @@
+Group 5 Implementation Coursework Contribution Report (ECS522U/744P)
+
+Abdullah: Implemented the weather forecast calculating algorithm and made data flow between components and completed
+implementation for many of the components
+
+Faizul: Found additional APIs that were needed and set up access to these, adding the necessary keys, tokens and passwords
+to the repository's configuration file and communicating instructions on how to use these APIs.
+
+Ruhel: Designed many SVG files and completed implementation for many of the components. Responsible for thoroughly testing the code
+for various inputs and ensuring the user interface is responsive and of a good quality.
+
+Santiago: Ensured the design and look of the application was consistent with our previous coursework and helped design SVGs
+as well as adjust the CSS as needed.
+
+Sufyaan: Helped with the CSS and design. Contributed to the code by cleaning up methods and directories,
+and ensuring methods are described well. Helped test the code with extreme inputs and reported any issues to be fixed.
+
+Contribution percentages:
+Abdullah: 20%
+Faizul: 20%
+Ruhel: 20%
+Santiago: 20%
+Sufyaan: 20%

@@ -13,7 +13,7 @@ class ForecastObject extends Component {
         </div>
         <br />
         <img
-          className="weatherIcon"
+          id="iconForecast"
           src={renderIcon(this.props.data[3])}
           alt="weather icon"
         />{" "}
