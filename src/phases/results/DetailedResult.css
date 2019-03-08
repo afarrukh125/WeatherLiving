@@ -11,7 +11,7 @@
 
 #weatherNameInd {
   font-size: 36px;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 #locationNameInd {
@@ -38,12 +38,12 @@
   z-index: -1;
 }
 
-.hyperlinkIcon{
-  width : 40%;
+.hyperlinkIcon {
+  width: 40%;
   margin: 2.5px;
 }
 
-.foreGround{
+.foreGround {
   z-index: 2;
 }
 @font-face {

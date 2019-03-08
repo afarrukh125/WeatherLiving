@@ -1,6 +1,6 @@
 ## WeatherLiving
 
-A simple weather application which shows the current weather. Users can enter if they would prefer similar, warmer or colder weather, alongside a distance. Once this is done it will take users to another page to show them a list of holiday destinations which meet the criteria.
+A simple weather application which shows the current weather. Users can enter what kind of weather they would prefer, alongside a distance. Once this is done it will take users to another page to show them a list of holiday destinations which meet the criteria. From here they can click one of the results and see the forecast for the next few days.
 
 ## Installation instructions
 

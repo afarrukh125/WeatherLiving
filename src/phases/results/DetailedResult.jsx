@@ -95,12 +95,6 @@ class DetailedResult extends Component {
     const forecastData = await forecastResponse.json();
     let forecastList = forecastData.list;
 
-    /**
-     * This is the algorithm to decide the forecast for remaining week
-     * It assumes that we are starting at 0:00 so it is not completely correct
-     * It gives the rough minimum maximum values for each day
-     */
-
     let days = this.getNextFewDays(moment().day());
     // moment is an npm package
     // moment.day() gives the current day of the week as a number

@@ -54,7 +54,7 @@ export function setBackground(weather) {
   }
 }
 
-// returns svg file based on the current weather
+// Returns svg file based on the current weather
 export function renderIcon(weather) {
   switch (weather) {
     case "Clear":
