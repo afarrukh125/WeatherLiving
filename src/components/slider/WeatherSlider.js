@@ -6,8 +6,6 @@ import React, { Component } from "react";
 /**
  * This class is just the weather slider (and the text that goes with it)
  * I made it into a separate object to ensure that these two are treated as a single entity
- * Currently it does not work as intended. The slider does move but the text needs to update
- * to the corresponding value of the slider.
  */
 class WeatherSlider extends Component {
   state = {

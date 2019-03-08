@@ -3,6 +3,8 @@ import React, { Component } from "react";
 /**
  * A class was needed for this because it is clickable and allows the user to set
  * whether they want to see the temperature in fahrenheit or celcius.
+ * Unfortunately while developing this application we decided it would be better to keep all temperatures to celcius (metric is better :) )
+ * It is unlikely that the user will click this component regardless.
  */
 class TemperatureDisplay extends Component {
   state = {

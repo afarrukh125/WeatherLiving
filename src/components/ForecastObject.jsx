@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./ForecastObject.css";
 import { renderIcon } from "../utils/AssetsManager";
 
+/**
+ * This is an individual forecast object. There are around 5 of these on the final detailed results page.
+ * As such the CSS file for each of these states that the width is 20%, to fit 5 of these.
+ */
 class ForecastObject extends Component {
   state = {};
   render() {

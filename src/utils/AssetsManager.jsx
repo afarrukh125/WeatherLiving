@@ -11,7 +11,6 @@ import ThunderstormBgObject from "../resources/weather-backgrounds/thunderstorm/
 import MistBg from "../resources/weather-backgrounds/mist/mist-bg.svg";
 import MistBgObject from "../resources/weather-backgrounds/mist/mist-bg-obj.svg";
 
-
 import Clear from "../resources/weather-icons/clear.svg";
 import Cloud from "../resources/weather-icons/cloud.svg";
 import Rain from "../resources/weather-icons/rain.svg";
@@ -20,6 +19,11 @@ import Snow from "../resources/weather-icons/snow.svg";
 import Thunder from "../resources/weather-icons/thunder.svg";
 import Atmosphere from "../resources/weather-icons/atmosphere.svg";
 
+/**
+ * This is a file containing helper methods that are used throughout the code
+ * Primarily they decide things like the background and icon based on a given weather
+ * There is a method that helps parse a value from the user input into ones the other methods use
+ */
 
 // returns a list of svg file depending on the weather.
 // index 0: the background
@@ -32,15 +36,15 @@ export function setBackground(weather) {
     case "Rain":
       return [RainBg, RainBgObject];
     case "Mist":
-      return [MistBg, MistBgObject]; 
+      return [MistBg, MistBgObject];
     case "Drizzle":
-      return [RainBg, RainBgObject]; 
+      return [RainBg, RainBgObject];
     case "Clouds":
-      return [CloudBg, CloudBgObject]; 
+      return [CloudBg, CloudBgObject];
     case "Snow":
       return [SnowBg, SnowBgObject];
     case "Fog":
-      return [MistBg, MistBgObject]; 
+      return [MistBg, MistBgObject];
     case "Thunderstorm":
       return [ThunderstormBg, ThunderstormBgObject];
     case "Atmosphere":
@@ -62,9 +66,9 @@ export function renderIcon(weather) {
     case "Clouds":
       return Cloud;
     case "Mist":
-      return Cloud; 
+      return Cloud;
     case "Fog":
-      return Cloud; 
+      return Cloud;
     case "Snow":
       return Snow;
     case "Thunderstorm":

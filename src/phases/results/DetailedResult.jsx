@@ -9,8 +9,14 @@ import "./DetailedResult.css";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 import ForecastObject from "../../components/ForecastObject";
-import Icon from "../../resources/skyscanner_logo.svg"
+import Icon from "../../resources/skyscanner_logo.svg";
 
+/**
+ * This is shown after the user clicks a particular result.
+ * It contains a list of forecasts (so a 3-tuple containing min, max and the name of the weather)
+ * This is passed in to the forecast object. The forecast object displays this information using the icon.
+ * The class ForecastObject.jsx has further information regarding this.
+ */
 class DetailedResult extends Component {
   state = { forecast: [] };
 
@@ -152,35 +158,32 @@ class DetailedResult extends Component {
         className="detailedResult"
         style={{ backgroundImage: `url(${backgroundItems[0]})` }}
       >
-      <div className="foreGround">
-        <img
-          src={renderIcon(parsedPreference)}
-          alt="weather icon"
-          width="200px"
-        />
-        <div id="weatherNameInd">{this.props.weather}</div>
-        <div id="locationNameInd">
-          <b>{this.state.name}</b>, {this.state.countryName}
-        </div>
-        <br />
-        <div id="tempDisplayInd">{Math.round(this.state.temp)}°</div>
-        <div className="resultBlock">
-          {this.getForecast()}
+        <div className="foreGround">
+          <img
+            src={renderIcon(parsedPreference)}
+            alt="weather icon"
+            width="200px"
+          />
+          <div id="weatherNameInd">{this.props.weather}</div>
+          <div id="locationNameInd">
+            <b>{this.state.name}</b>, {this.state.countryName}
+          </div>
           <br />
-          <a id="resultLink" href={this.state.skyscannerURL} target="_blank">
-          <img 
-            src={Icon} 
-            alt="logo" 
-            className="hyperlinkIcon"/> 
-          </a>
-        </div>
+          <div id="tempDisplayInd">{Math.round(this.state.temp)}°</div>
+          <div className="resultBlock">
+            {this.getForecast()}
+            <br />
+            <a id="resultLink" href={this.state.skyscannerURL} target="_blank">
+              <img src={Icon} alt="logo" className="hyperlinkIcon" />
+            </a>
+          </div>
 
-        <br />
-        <br />
-        <Button variant="secondary" onClick={this.handleBack}>
-          Back
-        </Button>
-      </div>
+          <br />
+          <br />
+          <Button variant="secondary" onClick={this.handleBack}>
+            Back
+          </Button>
+        </div>
         <img
           src={backgroundItems[1]}
           alt="weather background object"

@@ -39,7 +39,7 @@ class App extends Component {
    */
   getRangeCoordinates = () => {
     //this is where the range will be calculated
-    // api only deals with longitudinal and lataitudinal values.
+    // api only deals with longitudinal and latitudinal values.
     // this methods converts km to long and lat. Returns 4 points
     const latToKmVal = 110.574;
     const lonToKmVal = 111.32;
@@ -61,7 +61,8 @@ class App extends Component {
    * This returns an array to correspond to which phase we are in
    * Phase 0: Display weather and allow user to enter data
    * Phase 1: Display results based on this data
-   * Phase 2: Redirect to booking site
+   *
+   * Phase 1 has a subphase which shows all results or a detailed result depending on what the user has clicked. More information on this in Results.jsx.
    */
   getPhases() {
     return [

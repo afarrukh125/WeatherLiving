@@ -12,6 +12,9 @@ import DetailedResult from "./DetailedResult";
 /**
  * This is the page on which results will be shown based on the preferences
  * chosen in the first phase
+ * It has 2 subphases, one where it shows all results and also where it shows a detailed result.
+ * One of the two is shown depending on the boolean value in this component's state, detailedResult.
+ * The render method then returns a detailed result object if this is set to true, otherwise it renders the results.
  */
 class Results extends Component {
   state = {
@@ -200,10 +203,17 @@ class Results extends Component {
     this.props.updatePhase(0);
   };
 
+  /**
+   * Sets the state in this method to show detailed result or not.
+   * It also sets the index to be the the index of the desired result (this was passed in as a prop to the compoenent if you check the render method)
+   */
   showDetailed = i => {
     this.setState({ detailedResult: true, detailedResultIndex: i });
   };
 
+  /**
+   * This is the method passed into a DetailedResult component so that the back button within that page can return back to the list of results.
+   */
   backToResults = () => {
     this.setState({ detailedResult: false });
   };
