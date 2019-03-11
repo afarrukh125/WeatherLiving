@@ -87,6 +87,7 @@ class Weather extends Component {
             />
             <SearchButton
               preferredWeather={this.state.preferredWeather}
+              range={this.state.userRange}
               onUpdate={this.handleButtonClick}
             />
             <div>

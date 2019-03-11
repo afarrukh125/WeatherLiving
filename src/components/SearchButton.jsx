@@ -12,7 +12,7 @@ class SearchButton extends Component {
     // Only return selectable button if the preferred weather has been chosen.
     // The results component will deal with the range being set to small values
     // So we do not worry about it here.
-    if (this.props.preferredWeather != null) {
+    if (this.props.preferredWeather != null && this.props.range > null) {
       return (
         <Button
           onClick={() => {
