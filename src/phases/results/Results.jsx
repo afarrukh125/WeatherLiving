@@ -79,6 +79,8 @@ class Results extends Component {
   findPlaces = (weather, cities) => {
     const list = cities.list;
 
+    if (list == null) return;
+
     for (let i = 0; i < list.length; i++) {
       if (list[i].weather[0].main === weather) {
         this.setState({
